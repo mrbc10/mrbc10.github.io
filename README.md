@@ -1,1 +1,0 @@
-Apensa para a escola.
