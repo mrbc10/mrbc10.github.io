@@ -4,13 +4,18 @@ body {
     background-color: #DCDCDC;
   }
   
-div {
+.card {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
+.imagens{
+    display: flex;
+    gap: 15px; /* espaço entre elas */
+    justify-content: center;
+}
   /* Títulos */
   h1 {
     font-size: 36px;
@@ -21,4 +26,11 @@ div {
   p {
     font-size: 16px;
   }
-  
+
+ hr {
+    border: none;
+    height: 2px;
+    background-color: black;
+    margin: 20px 0;
+    width: 100%;
+}
