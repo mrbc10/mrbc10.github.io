@@ -1,7 +1,7 @@
 /* Estilo do corpo da página */
 body {
     font-family: Arial, sans-serif;
-    background-color: #DCDCDC;
+    background-color: #413d3d;
   }
   
 .card {
@@ -19,7 +19,7 @@ body {
   /* Títulos */
   h1 {
     font-size: 36px;
-    color: #DC143C;
+    color: #b42542;
   }
   
   /* Parágrafos */
@@ -30,7 +30,11 @@ body {
  hr {
     border: none;
     height: 2px;
-    background-color: black;
+    border-color: blueviolet;
+    background-color: rgb(110, 24, 136);
     margin: 20px 0;
     width: 100%;
+}
+a {
+   color: rgb(214, 61, 214);
 }
