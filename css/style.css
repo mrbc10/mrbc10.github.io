@@ -1,6 +1,7 @@
 body {
     background-color: antiquewhite;
 }
+
 .navbar {
     background-color: #555555;
     padding: 15px;
@@ -8,6 +9,7 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap; /* 🔥 permite quebrar no celular */
 }
 
 .navbar a {
@@ -18,41 +20,49 @@ body {
 .navbar a:hover {
     color: #df8f45;
 }
-.logo{
+
+.logo {
     margin-left: auto;
     display: flex;
     align-items: center;
     gap: 20px;
 }
-.logo img{
+
+.logo img {
     border-radius: 30px;
+    max-width: 100%; /* 🔥 evita quebrar no celular */
 }
 
-h1{
+h1 {
     display: flex;
-    justify-content: center; /* horizontal */
+    justify-content: center;
     text-decoration: underline;
+    text-align: center; /* 🔥 melhora no mobile */
 }
-p{
+
+p {
     margin: 0 auto;
     max-width: 800px;
     text-align: center;
     font-size: 20px;
+    padding: 0 10px; /* 🔥 não grudar nas bordas */
 }
-hr{
+
+hr {
     background-color: #555555;
     height: 0.5px;
 }
-.ct{
+
+.ct {
     font-family: cursive;
-    align-items: center;
-    justify-content: center;
 }
 
+/* 🔥 PRINCIPAL RESPONSIVIDADE */
 .ctimg {
     display: flex;
     justify-content: center;
     gap: 75px;
+    flex-wrap: wrap; /* 🔥 faz quebrar no celular */
 }
 
 .item {
@@ -60,11 +70,14 @@ hr{
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    width: 150px; /* 🔥 mantém alinhado com imagem */
 }
 
 .item img {
-    width: 150px;
-    height: 150px;
+    width: 100%; /* 🔥 adapta */
+    height: auto; /* 🔥 mantém proporção */
+    max-width: 150px;
+    aspect-ratio: 1/1; /* 🔥 mantém quadrado */
     object-fit: cover;
 }
 
@@ -73,7 +86,8 @@ hr{
     align-items: center;
     justify-content: center;
 
-    width: 150px;
+    width: 100%; /* 🔥 acompanha imagem */
+    max-width: 150px;
     height: 50px;
 
     background-color: #555555;
@@ -84,4 +98,21 @@ hr{
 
 .btn:hover {
     background-color: #df8f45;
+}
+
+/* 🔥 AJUSTE EXTRA PARA CELULAR */
+@media (max-width: 600px) {
+    .ctimg {
+        gap: 30px;
+    }
+
+    .navbar {
+        justify-content: center;
+    }
+
+    .logo {
+        margin-left: 0;
+        justify-content: center;
+        width: 100%;
+    }
 }
