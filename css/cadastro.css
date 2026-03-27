@@ -5,8 +5,10 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
-.navbar p{
+
+.navbar p {
     color: white;
     font-size: 20px;
 }
@@ -19,29 +21,81 @@
 .navbar a:hover {
     color: #df8f45;
 }
-.logo{
+
+.logo {
     margin-left: auto;
     font-weight: bold;
     flex-direction: column;
     font-size: 25px;
     color: rgb(141, 116, 3);
 }
-.formulario form{
-    background-color: #be8d22;
-    padding: 20px;
-    border-radius: 15px;    
-    width: 650px
+
+.formulario {
+    display: flex;
+    justify-content: center;
 }
-.formulario input:hover {
+
+.formulario form {
+    background-color: #be8d22;
+    padding: 30px; /* 🔥 mais espaço interno */
+    border-radius: 15px;
+
+    width: 100%;
+    max-width: 650px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* INPUTS */
+.formulario input {
+    width: 100%;
+    padding: 12px; /* 🔥 maior */
+    border-radius: 8px;
+    border: 1px solid #999;
+    outline: none;
+}
+
+/* FOCO */
+.formulario input:focus {
     border: 2px solid #df8f45;
 }
+
+/* BOTÃO */
 button {
     background-color: #c73a17;
-    color: rgb(0, 0, 0);
-    padding: 10px;
-    border-radius: 5px;
-}
-button:hover{
     color: black;
+    padding: 12px;
+    border-radius: 8px;
+
+    width: 100%;
+    max-width: 250px;
+    align-self: center;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* HOVER */
+button:hover {
     background-color: #cf6c1b;
-}   
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+    .navbar {
+        justify-content: center;
+    }
+
+    .logo {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .formulario form {
+        padding: 15px;
+    }
+}
