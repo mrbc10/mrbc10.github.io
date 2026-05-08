@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
         card.innerHTML = `
             <h3>${novoUsuario.nome}</h3>
             <p><strong>Email:</strong> ${novoUsuario.email}</p>
+            <p><strong>Senha:</strong> ${novoUsuario.senha}</p>
             <p><strong>Descrição:</strong> ${novoUsuario.descricao}</p>
         `;
 
