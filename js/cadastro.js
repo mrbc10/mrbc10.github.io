@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <h3>${novoUsuario.nome}</h3>
             <p><strong>Email:</strong> ${novoUsuario.email}</p>
             <p><strong>Senha:</strong> ${novoUsuario.senha}</p>
-            <p><strong>Imagem:</strong> ${novoUsuario.Imagem}</p>
+            <p><strong>Imagem:</strong> ${novoUsuario.imagem}</p>
             <p><strong>Descrição:</strong> ${novoUsuario.descricao}</p>
         `;
 
