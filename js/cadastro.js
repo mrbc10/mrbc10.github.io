@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
             nome: nome,
             email: email,
             senha: senha,
+            imagem: imagem,
             descricao: descricao
         };
 
@@ -43,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <h3>${novoUsuario.nome}</h3>
             <p><strong>Email:</strong> ${novoUsuario.email}</p>
             <p><strong>Senha:</strong> ${novoUsuario.senha}</p>
+            <p><strong>Imagem:</strong> ${novoUsuario.Imagem}</p>
             <p><strong>Descrição:</strong> ${novoUsuario.descricao}</p>
         `;
 
