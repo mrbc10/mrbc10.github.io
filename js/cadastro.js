@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const nome = document.getElementById("nome").value;
         const email = document.getElementById("email").value;
         const senha = document.getElementById("senha").value;
+        const imagem = document.getElementById("imagem").value;
         const descricao = document.getElementById("descricao").value;
 
         // =========================
