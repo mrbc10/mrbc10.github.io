@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/cadastro.css">
+    <title>Cadastro Instrumentos</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="../index.html">Início</a>
+        <a href="cadastro.html">Cadastro</a>
+        <div class="logo">Musicalizando</div>
+    </div>
+
+    <h1>Cadastro instrumentos</h1>
+
+    <div class="formulario">
+
+        <form id="formCadastro">
+
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+
+            <input type="email" id="email" name="email" placeholder="Seu email" required>
+
+            <input type="password" id="senha" name="senha" placeholder="Senha" required>
+            
+            <input type="url" id="imagem" placeholder="URL da imagem" required>
+
+            <input type="text" id="descricao" placeholder="Descrição" required>
+
+            <button type="submit">Cadastrar</button>
+
+        </form>
+    </div>
+
+    <div id="listaUsuarios"></div>
+
+    <script src="../js/cadastro.js"></script>
+</body>
+</html>
