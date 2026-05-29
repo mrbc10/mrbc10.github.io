@@ -1,3 +1,6 @@
+body{
+    background-color: antiquewhite;
+}
 .navbar {
     background-color: #555555;
     padding: 15px;
@@ -55,6 +58,7 @@
     border-radius: 8px;
     border: 1px solid #999;
     outline: none;
+    box-sizing: border-box;
 }
 
 /* FOCO */
@@ -98,4 +102,20 @@ button:hover {
     .formulario form {
         padding: 15px;
     }
+}
+.cardUsuario {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 250px;
+    margin: 20px auto;
+    border-radius: 10px;
+    
+}
+
+.cardUsuario img {
+    margin: 0 auto;
+}
+.cardUsuario strong{
+    color: #c73a17
 }
