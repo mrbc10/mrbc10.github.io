@@ -1,5 +1,7 @@
 body {
-    background-color: rgb(0, 0, 0);
+    background-image: url("../Imanges/fundo.png");
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .navbar {
@@ -25,14 +27,20 @@ body {
     margin-left: auto;
     display: flex;
     align-items: center;    
-    width: 50px;
-    height: 50px;
     gap: 20px;
 }
 
-.logo img {
+.logo img {body {
+    background-image: url("../img/fundo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+    width: 50px;
+    height: 50px;
     border-radius: 30px;
-    max-width: 100%; /* 🔥 evita quebrar no celular */
+    object-fit: cover;
+    max-width: 100%;
 }
 
 h1 {
