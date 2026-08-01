@@ -1,46 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="Imanges/favicon.ico" type="image/x-icon">
-    <title>Musicalizando</title>
-    <script src="js/js/script.js"></script>
+    <title>Claveon</title>
+
 </head>
+
 <body>
-    <div class="navbar">
-        <a href="html/cadastro.html" target="_self">Cadastro</a>
-        <a href="html/cadastro_instrumentos.html" target="_self">Cadastro Instrumentos</a>
-        <div class="logo">
-            <img src="Imanges/claveon.png" alt="Claveon" width="200">
+    <nav class="navbar">
+
+        <div class="menu">
+            <a href="#">Início</a>
+            <a href="html/cadastro.html">Cadastro</a>
+            <a href="#">Contato</a>
         </div>
+
+        <div class="logo">
+            <img src="Imanges/claveon.png" alt="Logo" onclick="abrirContato()">
+        </div>
+
+    </nav>
+    <div id="modalContato" class="modal">
+
+        <div class="modal-conteudo">
+
+            <span class="fechar" onclick="fecharContato()">&times;</span>
+
+            <h2>Claveon</h2>
+
+            <p>📧 contato@claveon.com.br</p>
+
+            <p>📱 (11) 99999-9999</p>
+
+            <p>📍 São Paulo - SP</p>
+
+            <p>🕒 Seg. à Sex. • 09:00 às 18:00</p>
+
+        </div>
+
     </div>
-    <h1 id="titulo">Quem somos nós?</h1>
-    <p>
-        Bem-vindo à Musicalizando, sua loja especializada em instrumentos musicais de qualidade. Oferecemos uma seleção completa para músicos de todos os níveis, com instrumentos de cordas, metais, madeiras e muito mais. Nosso objetivo é proporcionar a melhor experiência, unindo elegância, variedade e excelência em cada detalhe. Aqui, você encontra tudo o que precisa para expressar sua musicalidade com estilo e confiança.
-    </p>
+    <div class="sobre">
+        <h1>Quem somos nós?</h1>
+        <p>
+            Bem-vindo à Claveon, sua loja especializada em instrumentos musicais de qualidade. Oferecemos uma seleção completa para músicos de todos os níveis, com instrumentos de cordas, metais, madeiras e muito mais. Nosso objetivo é proporcionar a melhor experiência,
+            unindo elegância, variedade e excelência em cada detalhe. Aqui, você encontra tudo o que precisa para expressar sua musicalidade com estilo e confiança.
+        </p>
+    </div>
     <hr>
     <div class="ct">
         <h1>Categorias</h1>
 
         <div class="ctimg">
 
-    <div class="item">
-        <img src="Imanges/metais.jpg" alt="metais">
-        <a href="html/metais.html" class="btn">Metais</a>
-    </div>
+            <div class="item">
+                <img src="Imanges/metais.jpg" alt="metais">
+                <a href="html/metais.html" class="btn">Metais</a>
+            </div>
 
-    <div class="item">
-        <img src="Imanges/Cordas.png" alt="cordas">
-        <a href="html/cordas.html" class="btn">Cordas</a>
-    </div>
+            <div class="item">
+                <img src="Imanges/Cordas.png" alt="cordas">
+                <a href="html/cordas.html" class="btn">Cordas</a>
+            </div>
 
-    <div class="item">
-        <img src="Imanges/madeira.jpg" alt="madeiras">
-        <a href="html/madeiras.html" class="btn">Madeiras</a>
+            <div class="item">
+                <img src="Imanges/madeira.jpg" alt="madeiras">
+                <a href="html/madeiras.html" class="btn">Madeiras</a>
+            </div>
+        </div>
     </div>
-
-</div>
+    <script src="js/script.js"></script>
 </body>
+
 </html>

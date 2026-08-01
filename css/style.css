@@ -1,130 +1,294 @@
-body {
-    background-image: url("../Imanges/fundo.png");
-    background-position: center;
-    background-attachment: fixed;
-}
-
-.navbar {
-    background-color: #555555;
-    padding: 15px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap; /* 🔥 permite quebrar no celular */
-}
-
-.navbar a {
-    color: white;
-    font-size: 20px;
-}
-
-.navbar a:hover {
-    color: #df8f45;
-}
-
-.logo {
-    margin-left: auto;
-    display: flex;
-    align-items: center;    
-    gap: 20px;
-}
-
-.logo img {body {
-    background-image: url("../img/fundo.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-    width: 50px;
-    height: 50px;
-    border-radius: 30px;
-    object-fit: cover;
-    max-width: 100%;
-}
-
-h1 {
-    color: goldenrod;
-    display: flex;
-    justify-content: center;
-    text-decoration: underline;
-    text-align: center; /* 🔥 melhora no mobile */
-}
-
-p {
-    color: aliceblue;
-    margin: 0 auto;
-    max-width: 800px;
-    text-align: center;
-    font-size: 20px;
-    padding: 0 10px; /* 🔥 não grudar nas bordas */
-}
-
-hr {
-    background-color: #555555;
-    height: 0.5px;
-}
-
-.ct {
-    font-family: cursive;
-}
-
-/* 🔥 PRINCIPAL RESPONSIVIDADE */
-.ctimg {
-    display: flex;
-    justify-content: center;
-    gap: 75px;
-    flex-wrap: wrap; /* 🔥 faz quebrar no celular */
-}
-
-.item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    width: 150px; /* 🔥 mantém alinhado com imagem */
-}
-
-.item img {
-    width: 100%; /* 🔥 adapta */
-    height: auto; /* 🔥 mantém proporção */
-    max-width: 150px;
-    aspect-ratio: 1/1; /* 🔥 mantém quadrado */
-    object-fit: cover;
-}
-
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%; /* 🔥 acompanha imagem */
-    max-width: 150px;
-    height: 50px;
-
-    background-color: #555555;
-    color: white;
-    text-decoration: none;
-    border-radius: 10px;
-}
-
-.btn:hover {
-    background-color: #df8f45;
-}
-
-/* 🔥 AJUSTE EXTRA PARA CELULAR */
-@media (max-width: 600px) {
-    .ctimg {
-        gap: 30px;
+    body {
+        background-image: url("../Imanges/FundoClaveon.png");
+        background-size: cover;
+        /* Faz a imagem preencher toda a tela */
+        background-position: center;
+        /* Centraliza a imagem */
+        background-repeat: no-repeat;
+        /* Evita repetição */
+        background-attachment: fixed;
+        /* Opcional: efeito parallax */
+        min-height: 100vh;
+        /* Garante altura mínima da tela */
+        margin: 0;
     }
-
+    
     .navbar {
+        background: rgba(15, 15, 15, .88);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(212, 175, 55, .15);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, .35);
+        display: flex;
         justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 18px 40px;
     }
-
+    
+    .menu {
+        display: flex;
+        gap: 35px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .navbar a {
+        color: #F3E8C8;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color .3s ease;
+    }
+    
+    .navbar a:hover {
+        color: #D4AF37;
+    }
+    
     .logo {
-        margin-left: 0;
+        position: absolute;
+        right: 25px;
+        display: flex;
+        align-items: center;
+        z-index: 2;
+    }
+    
+    .logo img {
+        width: 50px;
+        height: 50px;
+        border-radius: 30px;
+        object-fit: cover;
+        max-width: 100%;
+        cursor: pointer;
+        transition: .3s ease;
+    }
+    
+    .logo img:hover {
+        transform: scale(1.08);
+    }
+    
+    h1 {
+        color: #D4AF37;
+        text-shadow: 0 2px 8px rgba(212, 175, 55, .35);
+        display: flex;
+        justify-content: center;
+        text-decoration: underline;
+        text-align: center;
+        /* 🔥 melhora no mobile */
+    }
+    
+    h2 {
+        color: #D4AF37;
+        text-shadow: 0 2px 8px rgba(212, 175, 55, .35);
+    }
+    
+    p {
+        color: #ECE6D8;
+        margin: 0 auto;
+        max-width: 800px;
+        text-align: center;
+        font-size: 20px;
+        padding: 0 10px;
+        /* 🔥 não grudar nas bordas */
+    }
+    
+    hr {
+        border: none;
+        height: 1px;
+        background: linear-gradient(to right, transparent, #D4AF37, transparent);
+    }
+    
+    .ct {
+        font-family: cursive;
+    }
+    /* 🔥 PRINCIPAL RESPONSIVIDADE */
+    
+    .ctimg {
+        display: flex;
+        justify-content: center;
+        gap: 75px;
+        flex-wrap: wrap;
+        /* 🔥 faz quebrar no celular */
+    }
+    
+    .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 150px;
+        /* 🔥 mantém alinhado com imagem */
+    }
+    
+    .item img {
+        width: 100%;
+        /* 🔥 adapta */
+        height: auto;
+        /* 🔥 mantém proporção */
+        max-width: 150px;
+        aspect-ratio: 1/1;
+        /* 🔥 mantém quadrado */
+        object-fit: cover;
+        border-radius: 15px;
+        transition: .3s;
+    }
+    
+    .item img:hover {
+        transform: scale(1.05);
+    }
+    
+    .btn {
+        background: #1B1B1B;
+        color: #F3E8C8;
+        border: 1px solid #D4AF37;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
         justify-content: center;
         width: 100%;
+        /* 🔥 acompanha imagem */
+        max-width: 150px;
+        height: 50px;
+        text-decoration: none;
     }
-}
+    
+    .btn:hover {
+        background: #D4AF37;
+        color: #121212;
+    }
+    /* 🔥 AJUSTE EXTRA PARA CELULAR */
+    
+    .sobre {
+        width: 90%;
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 30px;
+        text-align: center;
+        background: rgba(20, 20, 20, .70);
+        backdrop-filter: blur(5px);
+        border-radius: 20px;
+        border: 1px solid rgba(212, 175, 55, .25);
+    }
+    
+    .sobre h1 {
+        color: #D4AF37;
+        margin-bottom: 20px;
+    }
+    
+    .sobre p {
+        color: #E8DCC2;
+        font-size: 20px;
+        line-height: 1.8;
+    }
+    
+    .texto-completo {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .5s ease;
+    }
+    
+    .texto-completo.ativo {
+        max-height: 500px;
+    }
+    
+    .btn-sobre {
+        margin-top: 20px;
+        padding: 12px 30px;
+        background: #1B1B1B;
+        color: #D4AF37;
+        border: 1px solid #D4AF37;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: .3s;
+    }
+    
+    .btn-sobre:hover {
+        background: #D4AF37;
+        color: #111;
+    }
+    
+    .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .65);
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        padding: 20px;
+        /* espaço nas bordas */
+        box-sizing: border-box;
+    }
+    
+    .modal-conteudo {
+        width: 80%;
+        max-width: 700px;
+        /* ou 600px */
+        padding: 40px;
+        background: rgba(20, 20, 20, .95);
+        border: 1px solid #D4AF37;
+        border-radius: 20px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    
+    .modal-conteudo h2 {
+        color: #D4AF37;
+    }
+    
+    .fechar {
+        float: right;
+        font-size: 28px;
+        cursor: pointer;
+        color: #D4AF37;
+    }
+    
+    @media (max-width:768px) {
+        body {
+            background-attachment: scroll;
+        }
+        .navbar {
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+        }
+        .logo {
+            position: static;
+            order: -1;
+        }
+        .menu {
+            width: 100%;
+            justify-content: center;
+            gap: 15px;
+        }
+        .ctimg {
+            gap: 30px;
+        }
+        .sobre {
+            width: 95%;
+            padding: 20px;
+        }
+        .sobre p {
+            font-size: 18px;
+        }
+        .btn-sobre {
+            width: 100%;
+        }
+        .modal {
+            padding: 20px;
+            box-sizing: border-box;
+            align-items: center;
+        }
+        .modal-conteudo {
+            width: 95%;
+            padding: 20px;
+        }
+        .modal-conteudo h2 {
+            font-size: 22px;
+        }
+        .modal-conteudo p {
+            font-size: 16px;
+        }
+        .fechar {
+            font-size: 24px;
+        }
+    }
