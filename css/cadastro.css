@@ -1,121 +1,427 @@
-body{
-    background-color: antiquewhite;
+body {
+    background-image: url("../Imanges/FundoClaveon.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ===========================
+   NAVBAR
+=========================== */
+
 .navbar {
-    background-color: #555555;
-    padding: 15px;
-    border-radius: 15px;
+    background: rgba(15, 15, 15, .88);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, .15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .35);
+
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
+
+    position: relative;
+
+    padding: 18px 40px;
+}
+
+.menu {
+    display: flex;
+    gap: 35px;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
-.navbar p {
-    color: white;
-    font-size: 20px;
-}
-
 .navbar a {
-    color: white;
-    font-size: 20px;
+    color: #F3E8C8;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: .3s;
 }
 
 .navbar a:hover {
-    color: #df8f45;
+    color: #D4AF37;
 }
 
 .logo {
-    margin-left: auto;
-    font-weight: bold;
-    flex-direction: column;
-    font-size: 25px;
-    color: rgb(141, 116, 3);
+    position: absolute;
+    right: 30px;
 }
 
-.formulario {
-    display: flex;
-    justify-content: center;
-}
-
-.formulario form {
-    background-color: #be8d22;
-    padding: 30px; /* 🔥 mais espaço interno */
-    border-radius: 15px;
-
-    width: 100%;
-    max-width: 650px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* INPUTS */
-.formulario input {
-    width: 100%;
-    padding: 12px; /* 🔥 maior */
-    border-radius: 8px;
-    border: 1px solid #999;
-    outline: none;
-    box-sizing: border-box;
-}
-
-/* FOCO */
-.formulario input:focus {
-    border: 2px solid #df8f45;
-}
-
-/* BOTÃO */
-button {
-    background-color: #c73a17;
-    color: black;
-    padding: 12px;
-    border-radius: 8px;
-
-    width: 100%;
-    max-width: 250px;
-    align-self: center;
-
-    font-size: 16px;
+.logo img {
+    width: 55px;
+    height: 55px;
     cursor: pointer;
+    transition: .3s;
 }
 
-/* HOVER */
-button:hover {
-    background-color: #cf6c1b;
+.logo img:hover {
+    transform: scale(1.08);
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
+/* ===========================
+   CARD DE CADASTRO
+=========================== */
 
-    .navbar {
-        justify-content: center;
+.cadastro {
+
+    width: 90%;
+    max-width: 520px;
+
+    margin: 60px auto;
+
+    padding: 35px;
+
+    background: rgba(20,20,20,.75);
+
+    backdrop-filter: blur(8px);
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(212,175,55,.25);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.cadastro h1{
+
+    text-align:center;
+
+    color:#D4AF37;
+
+    margin-bottom:30px;
+
+    text-decoration:none;
+
+}
+
+.cadastro form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.cadastro label{
+
+    color:#F3E8C8;
+
+    font-size:17px;
+
+    font-weight:500;
+
+}
+
+.cadastro input{
+
+    width:100%;
+
+    box-sizing:border-box;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:16px;
+
+    background:#1B1B1B;
+
+    color:#F3E8C8;
+
+    border:1px solid rgba(212,175,55,.25);
+
+    transition:.3s;
+
+}
+
+.cadastro input:focus{
+
+    border-color:#D4AF37;
+
+    box-shadow:0 0 10px rgba(212,175,55,.25);
+
+}
+
+.cadastro input::placeholder{
+
+    color:#999;
+
+}
+
+/* ===========================
+   SENHA
+=========================== */
+
+.campo-senha{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.campo-senha input{
+
+    flex:1;
+
+}
+
+.btn-olho{
+
+    padding:8px 12px;
+
+    min-width:60px;
+
+    background:#1B1B1B;
+
+    color:#D4AF37;
+
+    border:1px solid #D4AF37;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:13px;
+
+    transition:.3s;
+
+}
+
+.btn-olho:hover{
+
+    background:#D4AF37;
+
+    color:#111;
+
+}
+
+/* ===========================
+   BOTÃO
+=========================== */
+
+.btn-cadastro{
+
+    margin-top:10px;
+
+    padding:15px;
+
+    background:#1B1B1B;
+
+    color:#D4AF37;
+
+    border:1px solid #D4AF37;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn-cadastro:hover{
+
+    background:#D4AF37;
+
+    color:#111;
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+   MENSAGENS
+=========================== */
+
+.mensagem{
+
+    min-height:24px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}
+
+.erro{
+
+    color:#ff6b6b;
+
+}
+
+.sucesso{
+
+    color:#66d17a;
+
+}
+
+/* ===========================
+   LOGIN
+=========================== */
+
+.login{
+
+    text-align:center;
+
+    margin-top:25px;
+
+    color:#E8DCC2;
+
+}
+
+.login a{
+
+    color:#D4AF37;
+
+    text-decoration:none;
+
+}
+
+.login a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ===========================
+   MODAL
+=========================== */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.65);
+
+    z-index:999;
+
+}
+
+.modal-conteudo{
+
+    width:90%;
+
+    max-width:450px;
+
+    background:rgba(20,20,20,.95);
+
+    padding:30px;
+
+    border-radius:20px;
+
+    border:1px solid #D4AF37;
+
+    text-align:center;
+
+    color:#F3E8C8;
+
+}
+
+.modal-conteudo h2{
+
+    color:#D4AF37;
+
+}
+
+.fechar{
+
+    float:right;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    color:#D4AF37;
+
+}
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
+
+@media(max-width:768px){
+
+    body{
+
+        background-attachment:scroll;
+
     }
 
-    .logo {
-        margin-left: 0;
-        width: 100%;
-        text-align: center;
+    .navbar{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        padding:20px;
+
     }
 
-    .formulario form {
-        padding: 15px;
-    }
-}
-.cardUsuario {
-    text-align: center;
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 250px;
-    margin: 20px auto;
-    border-radius: 10px;
-    
-}
+    .menu{
 
-.cardUsuario img {
-    margin: 0 auto;
-}
-.cardUsuario strong{
-    color: #c73a17
+        gap:20px;
+
+        justify-content:center;
+
+    }
+
+    .logo{
+
+        position:static;
+
+    }
+
+    .cadastro{
+
+        width:95%;
+
+        padding:25px;
+
+    }
+
+    .campo-senha{
+
+        flex-direction:column;
+
+    }
+
+    .btn-olho{
+
+        width:100%;
+
+    }
+
+    .btn-cadastro{
+
+        width:100%;
+
+    }
+
 }
