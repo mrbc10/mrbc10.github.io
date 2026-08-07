@@ -1,0 +1,238 @@
+/* ===========================
+   TÍTULO DA PÁGINA
+=========================== */
+
+.titulo {
+    width: 90%;
+    max-width: 1400px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.titulo h1 {
+    margin-bottom: 25px;
+}
+
+/* ===========================
+   PESQUISA
+=========================== */
+
+#pesquisa {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px 20px;
+
+    border: 1px solid rgba(212, 175, 55, .25);
+    border-radius: 12px;
+
+    background: rgba(20, 20, 20, .80);
+    backdrop-filter: blur(8px);
+
+    color: #F3E8C8;
+    font-size: 17px;
+
+    outline: none;
+    transition: .3s;
+}
+
+#pesquisa::placeholder {
+    color: #9b9b9b;
+}
+
+#pesquisa:focus {
+    border-color: #D4AF37;
+    box-shadow: 0 0 12px rgba(212, 175, 55, .35);
+}
+
+/* ===========================
+   PRODUTOS
+=========================== */
+
+.produtos {
+
+    width: 90%;
+    max-width: 1400px;
+
+    margin: 50px auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 35px;
+
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.card {
+
+    background: rgba(20,20,20,.75);
+
+    backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(212,175,55,.20);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    transition: .35s;
+
+    cursor: pointer;
+
+}
+
+.card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: #D4AF37;
+
+    box-shadow: 0 15px 30px rgba(0,0,0,.35);
+
+}
+
+/* ===========================
+   IMAGEM
+=========================== */
+
+.card img {
+
+    width: 100%;
+
+    height: 260px;
+
+    object-fit: cover;
+
+}
+
+/* ===========================
+   INFORMAÇÕES
+=========================== */
+
+.info {
+
+    padding: 22px;
+
+    text-align: center;
+
+}
+
+.marca {
+
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: #D4AF37;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+}
+
+.info h2 {
+
+    color: #F3E8C8;
+
+    font-size: 22px;
+
+    margin-bottom: 25px;
+
+    min-height: 55px;
+
+}
+
+/* ===========================
+   BOTÃO
+=========================== */
+
+.info .btn {
+
+    display: inline-block;
+
+    padding: 12px 28px;
+
+    background: #1B1B1B;
+
+    color: #D4AF37;
+
+    border: 1px solid #D4AF37;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: .3s;
+
+}
+
+.info .btn:hover {
+
+    background: #D4AF37;
+
+    color: #111;
+
+}
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
+
+@media (max-width: 900px) {
+
+    .produtos {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .titulo {
+
+        width: 95%;
+
+    }
+
+    #pesquisa {
+
+        width: 100%;
+
+        font-size: 16px;
+
+    }
+
+    .produtos {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+    }
+
+    .card img {
+
+        height: 220px;
+
+    }
+
+    .info h2 {
+
+        font-size: 20px;
+
+    }
+
+}

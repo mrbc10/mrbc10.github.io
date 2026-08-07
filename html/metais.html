@@ -1,21 +1,150 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Metais | Claveon</title>
+
+    <link rel="shortcut icon" href="../Imanges/favicon.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/metais.css">
-    
-    <title>Metais</title>
+    <link rel="stylesheet" href="../css/categoria.css">
 </head>
+
 <body>
-    <div class="navbar">
-        <a href="../index.html" target="_self">inicio</a>
-        <a href="cadastro.html" target="_self">Cadastro</a>
-        <div class="logo">
-            <img src="../Imanges/LogoNavbar.png" alt="Musicalizando" width="200">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+
+        <div class="menu">
+            <a href="../index.html">Início</a>
+            <a href="cadastro.html">Cadastro</a>
+            <a href="#" onclick="abrirContato()">Contato</a>
         </div>
+
+        <div class="logo">
+            <img src="../Imanges/claveon.png" alt="Logo" onclick="abrirContato()">
+        </div>
+
+    </nav>
+
+    <!-- Título -->
+    <section class="titulo">
+
+        <h1>Metais</h1>
+
+        <input
+            type="text"
+            id="pesquisa"
+            placeholder="Pesquisar produtos...">
+
+    </section>
+
+    <!-- Produtos -->
+    <section class="produtos">
+
+        <!-- Produto 1 -->
+        <div class="card" data-produto="capa trompete claveon">
+
+            <img src="../Imanges/teste.png" alt="Capa para Trompete">
+
+            <div class="info">
+
+                <span class="marca">Claveon</span>
+
+                <h2>Capa para Trompete</h2>
+
+                <a href="produto.html?id=1" class="btn">
+                    Ver detalhes
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Produto 2 -->
+        <div class="card" data-produto="oleo lubrificante yamaha">
+
+            <img src="../Imanges/teste.png" alt="Óleo Lubrificante">
+
+            <div class="info">
+
+                <span class="marca">Yamaha</span>
+
+                <h2>Óleo Lubrificante</h2>
+
+                <a href="produto.html?id=2" class="btn">
+                    Ver detalhes
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Produto 3 -->
+        <div class="card" data-produto="bocal trompete michael">
+
+            <img src="../Imanges/teste.png" alt="Bocal para Trompete">
+
+            <div class="info">
+
+                <span class="marca">Michael</span>
+
+                <h2>Bocal para Trompete</h2>
+
+                <a href="produto.html?id=3" class="btn">
+                    Ver detalhes
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Produto 4 -->
+        <div class="card" data-produto="estojo trompete weril">
+
+            <img src="../Imanges/teste.png" alt="Estojo para Trompete">
+
+            <div class="info">
+
+                <span class="marca">Weril</span>
+
+                <h2>Estojo para Trompete</h2>
+
+                <a href="produto.html?id=4" class="btn">
+                    Ver detalhes
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Modal de Contato -->
+    <div id="modalContato" class="modal">
+
+        <div class="modal-conteudo">
+
+            <span class="fechar" onclick="fecharContato()">&times;</span>
+
+            <h2>Claveon</h2>
+
+            <p>E-mail: contato@claveon.com.br</p>
+
+            <p>Telefone: (11) 99999-9999</p>
+
+            <p>Endereço: São Paulo - SP</p>
+
+            <p>Horário: Segunda a Sexta • 09:00 às 18:00</p>
+
+        </div>
+
     </div>
-    <h1>Metais</h1>
+    <script src="../js/instrumentos.js"></script>
+
 </body>
+
 </html>

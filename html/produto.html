@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Produto | Claveon</title>
+
+    <link rel="shortcut icon" href="../Imanges/favicon.ico">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="../css/produto.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="menu">
+            <a href="../index.html">Início</a>
+            <a href="cadastro.html">Cadastro</a>
+            <a href="#" onclick="abrirContato()">Contato</a>
+        </div>
+
+        <div class="logo">
+            <img src="../Imanges/claveon.png"
+                 onclick="abrirContato()">
+        </div>
+
+    </nav>
+
+    <main class="produto">
+
+        <div class="imagem">
+
+            <img id="fotoPrincipal"
+                 src="../Imanges/produtos/sem-imagem.png"
+                 alt="Produto">
+
+        </div>
+
+        <div class="dados">
+
+            <span class="marca">
+                Claveon
+            </span>
+
+            <h1>
+                Capa para Trompete
+            </h1>
+
+            <hr>
+
+            <p><strong>Categoria:</strong> Metais</p>
+
+            <p><strong>Material:</strong> Couro Sintético</p>
+
+            <p><strong>Cor:</strong> Azul</p>
+
+            <p><strong>Compatibilidade:</strong> Trompete</p>
+
+            <h2>Descrição</h2>
+
+            <p>
+
+                Desenvolvida para proteger o instrumento
+                durante o transporte, oferecendo resistência,
+                conforto e excelente acabamento.
+
+            </p>
+
+            <div class="botoes">
+
+                <button class="btn-comprar">
+
+                    Comprar
+
+                </button>
+
+                <button class="btn-contato"
+                        onclick="abrirContato()">
+
+                    Falar conosco
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <section class="galeria">
+
+        <img src="../Imanges/produtos/sem-imagem.png">
+
+        <img src="../Imanges/produtos/sem-imagem.png">
+
+        <img src="../Imanges/produtos/sem-imagem.png">
+
+        <img src="../Imanges/produtos/sem-imagem.png">
+
+    </section>
+
+    <div id="modalContato" class="modal">
+
+        <div class="modal-conteudo">
+
+            <span class="fechar"
+                  onclick="fecharContato()">&times;</span>
+
+            <h2>Claveon</h2>
+
+            <p>E-mail: contato@claveon.com.br</p>
+
+            <p>Telefone: (11) 99999-9999</p>
+
+            <p>Endereço: São Paulo - SP</p>
+
+            <p>Horário: Segunda a Sexta • 09:00 às 18:00</p>
+
+        </div>
+
+    </div>
+
+    <script src="../js/instrumentos.js"></script>
+
+</body>
+
+</html>
