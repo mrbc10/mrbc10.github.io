@@ -273,22 +273,5 @@
         .btn-sobre {
             width: 100%;
         }
-        .modal {
-            padding: 20px;
-            box-sizing: border-box;
-            align-items: center;
-        }
-        .modal-conteudo {
-            width: 95%;
-            padding: 20px;
-        }
-        .modal-conteudo h2 {
-            font-size: 22px;
-        }
-        .modal-conteudo p {
-            font-size: 16px;
-        }
-        .fechar {
-            font-size: 24px;
-        }
+        
     }

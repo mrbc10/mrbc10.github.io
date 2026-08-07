@@ -3,19 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro | Claveon</title>
+
+    <link rel="shortcut icon" href="../Imanges/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/cordas.css">
-    
-    <title>Cordas</title>
+    <link rel="stylesheet" href="../css/.css">
 </head>
 <body>
-    <div class="navbar">
-        <a href="../index.html" target="_self">inicio</a>
-        <a href="cadastro.html" target="_self">Cadastro</a>
-        <div class="logo">
-            <img src="../Imanges/LogoNavbar.png" alt="Musicalizando" width="200">
+     <!-- Navbar -->
+    <nav class="navbar">
+
+        <div class="menu">
+            <a href="../index.html">Início</a>
+            <a href="cadastro.html">Cadastro</a>
+            <a href="#" onclick="abrirContato()">Contato</a>
         </div>
-    </div>
+
+        <div class="logo">
+            <img src="../Imanges/claveon.png" alt="Logo" onclick="abrirContato()">
+        </div>
+
+    </nav>
     <h1>Cordas</h1>
+    <div id="modalContato" class="modal">
+
+        <div class="modal-conteudo">
+
+            <span class="fechar" onclick="fecharContato()">&times;</span>
+
+            <h2>Claveon</h2>
+
+            <p>📧 contato@claveon.com.br</p>
+
+            <p>📱 (11) 99999-9999</p>
+
+            <p>📍 São Paulo - SP</p>
+
+            <p>🕒 Seg. à Sex. • 09:00 às 18:00</p>
+
+        </div>
+
+    </div>
+    <script src="../js/cadastro.js"></script>
 </body>
 </html>

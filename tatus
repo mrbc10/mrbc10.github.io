@@ -1,0 +1,324 @@
+[33mcommit 0198f25ae9b664b11565ae97af1a9e393a217e3d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Miguel Almeida <miguelcleytonbru@gmail.com>
+Date:   Tue Aug 4 14:17:50 2026 -0300
+
+    Area de Cadastro
+
+[33mcommit 44876a32017bd6e2bfb3c26f4093075c90471e17[m
+Author: mrbc10 <miguelcleytonbru@gmail.com>
+Date:   Sat Aug 1 15:39:24 2026 -0300
+
+    Primeiro commit
+
+[33mcommit 31b9ca1ac81184c69401b3ea620d325ccac9b6ef[m
+Author: Miguel Almeida <miguelcleytonbru@gmail.com>
+Date:   Fri Jul 31 14:43:10 2026 -0300
+
+    introduzindo fundo
+
+[33mcommit 200db9d611e9e43ff90d5c4fcc785e46d9676de4[m
+Author: Miguel Almeida <miguelcleytonbru@gmail.com>
+Date:   Fri Jul 31 14:27:12 2026 -0300
+
+    ...
+
+[33mcommit b48bf0e12e918b0c383532280fea37cec7e727e9[m
+Merge: 4774801 aeb2305
+Author: mrbc10 <miguelcleytonbru@gmail.com>
+Date:   Fri May 29 19:29:12 2026 -0300
+
+    Merge branch 'main' of https://github.com/mrbc10/mrbc10.github.io
+
+[33mcommit 4774801df2ef172831d178b98b1998492d10c60f[m
+Author: mrbc10 <miguelcleytonbru@gmail.com>
+Date:   Fri May 29 19:28:25 2026 -0300
+
+    Update index.html
+
+[33mcommit aeb2305aec1c9a35b86f85ff8558e5ac16dbf2f5[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri May 29 14:32:46 2026 -0300
+
+    Add files via upload
+
+[33mcommit b5ddc3b3714bb7e425fd0f0fe9a7215dfc44bead[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri May 29 14:32:22 2026 -0300
+
+    Delete js/script.js
+
+[33mcommit 42a74e6d1fd91ffcee8402269b3258c95f858b6f[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri May 29 14:31:58 2026 -0300
+
+    Update cadastro.js
+
+[33mcommit b6bfbd9bf8d59f4e768451626b873aa8d74d1945[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri May 29 14:31:32 2026 -0300
+
+    Update cadastro.css
+
+[33mcommit 3950552b0637d87c0393aeb945d7f2a65876ed88[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri May 29 14:31:08 2026 -0300
+
+    Add files via upload
+
+[33mcommit 4d6b109f0eeeb01cea61afb292d9b01b315777c7[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri May 29 14:30:37 2026 -0300
+
+    Update cadastro.html
+
+[33mcommit 2dbd55be8afc3cc405d0412e1449180a56e610b8[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri May 29 14:30:15 2026 -0300
+
+    Update index.html
+
+[33mcommit 8f1be7500476afa63e381169eef152b6033b42c6[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri May 22 14:43:13 2026 -0300
+
+    Implement card rendering function in script.js
+    
+    Added a function to render cards with instrument data.
+
+[33mcommit 04a9ea6d78a616f3740e1fbeef7e22c3f87d1caa[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Tue May 19 17:25:53 2026 -0300
+
+    Update cadastro.js
+
+[33mcommit d75355d7210303d56050d22c1625bc108fe15b46[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Tue May 19 17:12:19 2026 -0300
+
+    Update cadastro.js
+
+[33mcommit 903025261a8efdc64d80184427be30291a1a4a0a[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Tue May 19 17:11:08 2026 -0300
+
+    Update cadastro.js
+
+[33mcommit f23d88b34021551184f63fa6392ab5a3c5a33cab[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Tue May 19 17:09:56 2026 -0300
+
+    Update cadastro.html
+
+[33mcommit a10b33970aae978b37a9818e94038fe673b68151[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Tue May 19 17:09:03 2026 -0300
+
+    Update cadastro.js
+
+[33mcommit 2a562469e25844d2ca5e4cc1e70d0a9b7a51da6e[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri May 8 14:14:18 2026 -0300
+
+    Update cadastro.js
+
+[33mcommit 68ffc87159d05d8a90ae53e5ce30ab41b212c841[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Mon May 4 19:05:05 2026 -0300
+
+    Update cadastro.html
+
+[33mcommit d90aa80cb2bf9cbbc7f146eb7f9f4dc9e13fb393[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Mon May 4 19:04:40 2026 -0300
+
+    Add files via upload
+
+[33mcommit 653742e2e86f36beb2e23a34178f2153a07c1362[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Wed Apr 1 23:07:39 2026 -0300
+
+    Add files via upload
+
+[33mcommit f91658937bd0fefcc25912b04f81caf38151196c[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Wed Apr 1 23:07:28 2026 -0300
+
+    Delete js/js directory
+
+[33mcommit da28e0a81015360f0568283cd5f6109136637571[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Wed Apr 1 23:06:56 2026 -0300
+
+    Add files via upload
+
+[33mcommit 1cfc11cbc1ae0d47d0ec7091308143a20049a675[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Wed Apr 1 23:06:36 2026 -0300
+
+    Update index.html
+
+[33mcommit 4c40ee4f1dc74449b9d07e7a0e1a6f44502f15dd[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri Mar 27 13:55:40 2026 -0300
+
+    Update cadastro.css
+
+[33mcommit cb49296f9742bdf73cbada035ea16573feb0ed60[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri Mar 27 13:51:38 2026 -0300
+
+    Update cadastro.css
+
+[33mcommit b1f9236d7f031f7dddbf4e5f70969aef2dc26b6b[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Tue Mar 24 22:55:47 2026 -0300
+
+    Enhance CSS for responsiveness and layout adjustments
+    
+    Added responsive design features and improved layout for mobile devices.
+
+[33mcommit 5d7edfd9a3b5101c604be7a927aa9a0df5345236[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Sat Mar 21 23:27:22 2026 -0300
+
+    Add files via upload
+
+[33mcommit 7a3c5c74ca28466b7166691d1edc31bece3c111e[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Sat Mar 21 23:27:10 2026 -0300
+
+    Add files via upload
+
+[33mcommit 1307f7a78752e0493d6fe2a1f2c36a3b108e3548[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Sat Mar 21 23:26:52 2026 -0300
+
+    Add files via upload
+
+[33mcommit afc3b4cbb9f19ac64cd1da666bd635139cc21380[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Sat Mar 21 23:26:39 2026 -0300
+
+    Add files via upload
+
+[33mcommit b72c5fcb4361dea467a758f493bc98232041116f[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Sat Mar 21 23:21:31 2026 -0300
+
+    Delete Projeto directory
+
+[33mcommit 25c584c98dbbee399f3b5f7a58fa789b057bb684[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Sat Mar 21 23:18:41 2026 -0300
+
+    Alterando os files
+
+[33mcommit 14df740827a1c49cd2c8201f4f202a2b158f3485[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Sat Mar 21 23:17:54 2026 -0300
+
+    Delete index.html
+
+[33mcommit c28436503c01df5f381aea50248c3f7e19319dba[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Sat Mar 21 23:17:47 2026 -0300
+
+    Delete forms.css
+
+[33mcommit a3317ae21d32be5e05680ac04315171a2bd8dc35[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Sat Mar 21 23:17:41 2026 -0300
+
+    Delete forms.html
+
+[33mcommit c3d850537a1fdc1d561a3a987171591b78ab8574[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Sat Mar 21 23:17:35 2026 -0300
+
+    Delete Jacare.png
+
+[33mcommit 98007f16546701886e6dfbe6753db5c3205f7c01[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Sat Mar 21 23:17:29 2026 -0300
+
+    Delete style.css
+
+[33mcommit 810d09197e9bf878e2586ae7efc357f8d94dd0a7[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri Mar 20 14:35:57 2026 -0300
+
+    Add styles for form and button elements
+
+[33mcommit 0118d81aa992efaf49f8aebda1f182b2c9e3cf2d[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri Mar 20 14:35:39 2026 -0300
+
+    Add initial forms.html file with a form structure
+
+[33mcommit 7f6684f2ad874e9478ee7b4e26a2dd02e856ba80[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri Mar 20 14:35:26 2026 -0300
+
+    Enhance index.html with new registration link
+    
+    Added a link to a registration form and updated the existing link to open in a new tab.
+
+[33mcommit beac88fc45bf0827b34d476361a7432358c4ab13[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Fri Mar 20 14:35:10 2026 -0300
+
+    Update style.css
+
+[33mcommit c4dc4dca39781dec02977325895f48b458f6b333[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Thu Mar 19 23:57:00 2026 -0300
+
+    Refactor CSS styles and add card layout
+
+[33mcommit bb0cafc6f62b4001df04d6aa398e436666c4c9b0[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Thu Mar 19 23:56:43 2026 -0300
+
+    Update index.html
+
+[33mcommit 9a584345d448e0087621b071a8ff52954d39b53e[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Tue Mar 17 17:34:48 2026 -0300
+
+    Delete README.md
+
+[33mcommit 3a1014b547f5c8b55c2d6af70bf1ad1ed0b2130b[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Tue Mar 17 17:33:47 2026 -0300
+
+    Add files via upload
+
+[33mcommit f01943b11215d795eb88b4f5b83097d5b1f2269d[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Tue Mar 17 17:33:32 2026 -0300
+
+    Add files via upload
+
+[33mcommit e4ba21e1ba5cc572c4f0ece08ac4c0f95d8b86fb[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Tue Mar 17 17:33:09 2026 -0300
+
+    Add files via upload
+
+[33mcommit ed55a33ba97189727927d68620f5f6aae3e323e0[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Tue Mar 17 17:32:46 2026 -0300
+
+    Delete DWEB_2026 directory
+
+[33mcommit 4314c867baf7ccd67f062f0c49fadcb5269c5edd[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Tue Mar 17 17:30:33 2026 -0300
+
+    Add initial README with school project description
+
+[33mcommit 3b37d1c87d7d9a09b1e7b986c0893cc98c51b22c[m
+Author: mrbc10 <137110900+mrbc10@users.noreply.github.com>
+Date:   Tue Mar 17 17:16:14 2026 -0300
+
+    Add files via upload
