@@ -16,6 +16,7 @@ function toggleSenha(idCampo, botao) {
 
 }
 
+
 // ===========================
 // VALIDAÇÃO DO FORMULÁRIO
 // ===========================
@@ -37,95 +38,139 @@ formulario.addEventListener("submit", function (event) {
     mensagem.className = "mensagem";
     mensagem.textContent = "";
 
-    // Nome
+
+    // ===========================
+    // VALIDAÇÕES
+    // ===========================
+
     if (nome.length < 3) {
         mensagem.textContent = "Informe um nome válido.";
         mensagem.classList.add("erro");
         return;
     }
 
-    // E-mail
     if (!email.includes("@") || !email.includes(".")) {
         mensagem.textContent = "Digite um e-mail válido.";
         mensagem.classList.add("erro");
         return;
     }
 
-    // Telefone
     if (telefone.length < 10) {
         mensagem.textContent = "Digite um telefone válido.";
         mensagem.classList.add("erro");
         return;
     }
 
-    // Senha
     if (senha.length < 8) {
         mensagem.textContent = "A senha deve possuir no mínimo 8 caracteres.";
         mensagem.classList.add("erro");
         return;
     }
 
-    // Confirmar senha
     if (senha !== confirmarSenha) {
         mensagem.textContent = "As senhas não coincidem.";
         mensagem.classList.add("erro");
         return;
     }
 
-    // Sucesso
+
+    // ===========================
+    // SALVAR CADASTRO
+    // ===========================
+
+    let cadastros = JSON.parse(localStorage.getItem("cadastros")) || [];
+
+    const novoCadastro = {
+        nome: nome,
+        email: email,
+        telefone: telefone,
+        senha: senha
+    };
+
+    cadastros.push(novoCadastro);
+
+    localStorage.setItem("cadastros", JSON.stringify(cadastros));
+
+
+    // ===========================
+    // MENSAGEM DE SUCESSO
+    // ===========================
+
     mensagem.textContent = "Cadastro realizado com sucesso!";
     mensagem.classList.add("sucesso");
 
-    // Limpa os campos
+
+    // ===========================
+    // LIMPAR CAMPOS
+    // ===========================
+
     formulario.reset();
 
-    // Volta as senhas para oculto
     document.getElementById("senha").type = "password";
     document.getElementById("confirmarSenha").type = "password";
 
-    // Restaura o texto dos botões
     document.querySelectorAll(".btn-olho").forEach(botao => {
         botao.textContent = "Ver";
     });
 
-    // Remove a mensagem após 3 segundos
+
+    // ===========================
+    // REMOVER MENSAGEM
+    // ===========================
+
     setTimeout(() => {
+
         mensagem.textContent = "";
         mensagem.className = "mensagem";
+
     }, 3000);
 
 });
+
 
 // ===========================
 // MODAL DE CONTATO
 // ===========================
 
 function abrirContato() {
+
     document.getElementById("modalContato").style.display = "flex";
+
 }
+
 
 function fecharContato() {
+
     document.getElementById("modalContato").style.display = "none";
+
 }
 
+
 // Fecha clicando fora do modal
+
 window.onclick = function (event) {
 
     const modal = document.getElementById("modalContato");
 
     if (event.target === modal) {
+
         modal.style.display = "none";
+
     }
 
 };
 
+
 // Fecha ao pressionar ESC
+
 document.addEventListener("keydown", function (event) {
 
     const modal = document.getElementById("modalContato");
 
     if (event.key === "Escape") {
+
         modal.style.display = "none";
+
     }
 
 });
