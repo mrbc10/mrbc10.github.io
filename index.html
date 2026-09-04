@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="Imanges/favicon.ico" type="image/x-icon">
-    <title>Claveon</title>
 
+    <title>Claveon</title>
 </head>
 
 <body>
+
     <nav class="navbar">
 
         <div class="menu">
@@ -24,6 +26,7 @@
         </div>
 
     </nav>
+
     <div id="modalContato" class="modal">
 
         <div class="modal-conteudo">
@@ -33,25 +36,32 @@
             <h2>Claveon</h2>
 
             <p>📧 contato@claveon.com.br</p>
-
             <p>📱 (11) 99999-9999</p>
-
             <p>📍 São Paulo - SP</p>
-
             <p>🕒 Seg. à Sex. • 09:00 às 18:00</p>
 
         </div>
 
     </div>
+
     <div class="sobre">
+
         <h1>Quem somos nós?</h1>
+
         <p>
-            Bem-vindo à Claveon, sua loja especializada em instrumentos musicais de qualidade. Oferecemos uma seleção completa para músicos de todos os níveis, com instrumentos de cordas, metais, madeiras e muito mais. Nosso objetivo é proporcionar a melhor experiência,
-            unindo elegância, variedade e excelência em cada detalhe. Aqui, você encontra tudo o que precisa para expressar sua musicalidade com estilo e confiança.
+            Bem-vindo à Claveon, sua loja especializada em instrumentos musicais
+            de qualidade. Oferecemos uma seleção completa para músicos de todos
+            os níveis, com instrumentos de cordas, metais, madeiras e muito mais.
+            Nosso objetivo é proporcionar a melhor experiência, unindo elegância,
+            variedade e excelência em cada detalhe.
         </p>
+
     </div>
+
     <hr>
+
     <div class="ct">
+
         <h1>Categorias</h1>
 
         <div class="ctimg">
@@ -70,9 +80,28 @@
                 <img src="Imanges/madeira.jpg" alt="madeiras">
                 <a href="html/madeiras.html" class="btn">Madeiras</a>
             </div>
+
         </div>
+
     </div>
+
     <script src="js/script.js"></script>
+
+    <script>
+        fetch('/lista')
+            .then(response => response.json())
+            .then(data => {
+
+                console.log("Resultado retornado pelo fetch():", data);
+
+            })
+            .catch(error => {
+
+                console.error("Erro ao buscar a lista:", error);
+
+            });
+    </script>
+
 </body>
 
 </html>

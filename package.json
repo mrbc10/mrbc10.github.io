@@ -1,0 +1,23 @@
+{
+  "name": "pvg",
+  "version": "1.0.0",
+  "description": "teste",
+  "homepage": "https://github.com/mrbc10/mrbc10.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/mrbc10/mrbc10.github.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrbc10/mrbc10.github.io.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "mi"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
