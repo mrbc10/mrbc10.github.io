@@ -286,4 +286,4 @@ try {
 } catch (erro) {
     console.error("Erro ao verificar os cadastros existentes:", erro);
 }
-```
+
