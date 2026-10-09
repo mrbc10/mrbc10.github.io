@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/instrumentos.css">
+    <link rel="shortcut icon" href="../Imanges/favicon.ico" type="image/x-icon">
+
+    <title>Cadastrar Produto | Claveon</title>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="menu">
+            <a href="../index.html">Início</a>
+            <a href="cadastro.html">Cadastro</a>
+            <a href="cadastro-instrumentos.html">Instrumentos</a>
+            <a href="cadastro-produtos.html">Produtos</a>
+            <a href="#" onclick="abrirContato(); return false;">Contato</a>
+        </div>
+
+        <div class="logo">
+            <img src="../Imanges/claveon.png" alt="Logo Claveon"
+                 onclick="abrirContato()">
+        </div>
+    </nav>
+
+    <div id="modalContato" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar" onclick="fecharContato()">&times;</span>
+            <h2>Claveon</h2>
+            <p>contato@claveon.com.br</p>
+            <p>(11) 99999-9999</p>
+            <p>São Paulo - SP</p>
+            <p>Seg. à Sex. • 09:00 às 18:00</p>
+        </div>
+    </div>
+
+    <main class="formulario-instrumento">
+        <h1>Cadastrar produto</h1>
+        <p class="subtitulo">Associe o produto ao instrumento correspondente.</p>
+
+        <form id="formProduto">
+
+            <label for="nomeProduto">Nome do produto</label>
+            <input type="text" id="nomeProduto" name="nome"
+                   placeholder="Ex.: Trompete Yamaha" required>
+
+            <label for="instrumentoId">Instrumento relacionado</label>
+            <select id="instrumentoId" name="instrumentoId" required>
+                <option value="">Carregando instrumentos...</option>
+            </select>
+
+            <label for="descricaoProduto">Descrição</label>
+            <textarea id="descricaoProduto" name="descricao"
+                      placeholder="Descreva o produto"></textarea>
+
+            <label for="precoProduto">Preço (R$)</label>
+            <input type="number" id="precoProduto" name="preco"
+                   placeholder="Ex.: 1299.90" min="0" step="0.01" required>
+
+            <label for="imagemProduto">Caminho ou URL da imagem</label>
+            <input type="text" id="imagemProduto" name="imagem"
+                   placeholder="Ex.: ../Imanges/trompete-yamaha.jpg">
+
+            <button type="submit" id="botaoProduto" class="btn-cadastro">
+                Cadastrar produto
+            </button>
+
+            <p id="mensagemProduto" class="mensagem" role="status"></p>
+        </form>
+
+        <p class="link-formulario">
+            Precisa cadastrar um instrumento primeiro?
+            <a href="cadastro-instrumentos.html">Cadastrar instrumento</a>
+        </p>
+    </main>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

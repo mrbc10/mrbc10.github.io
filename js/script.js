@@ -1,81 +1,120 @@
 
- // ===========================
-// CLASSE DO INSTRUMENTO
-// ===========================
+/* ===============================
+   MODAL DE CONTATO
+================================ */
 
-class ObraDeArte {
-    constructor(t, desc, img, alt) {
-        this.t = t;
-        this.desc = desc;
-        this.img = img;
-        this.alt = alt;
+function abrirContato() {
+    const modal = document.getElementById("modalContato");
+
+    if (modal) {
+        modal.style.display = "flex";
+    }
+}
+
+function fecharContato() {
+    const modal = document.getElementById("modalContato");
+
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+
+window.addEventListener("click", function (event) {
+    const modal = document.getElementById("modalContato");
+
+    if (modal && event.target === modal) {
+        fecharContato();
+    }
+});
+
+document.addEventListener("keydown", function (event) {
+    const modal = document.getElementById("modalContato");
+
+    if (event.key === "Escape" && modal &&
+        modal.style.display === "flex") {
+        fecharContato();
+    }
+});
+
+
+/* ===============================
+   FUNÇÕES AUXILIARES
+================================ */
+
+function mostrarMensagem(elemento, texto, tipo) {
+    if (!elemento) return;
+
+    elemento.textContent = texto;
+    elemento.classList.remove("sucesso", "erro");
+
+    if (tipo) {
+        elemento.classList.add(tipo);
     }
 }
 
 
-// ===========================
-// CADASTRO DE INSTRUMENTOS
-// ===========================
+/* ===============================
+   CADASTRO DE INSTRUMENTOS
+================================ */
 
-const form = document.getElementById('formInstrumento');
+const formInstrumento = document.getElementById("formInstrumento");
 
-if (form) {
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
+if (formInstrumento) {
+    formInstrumento.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-        const t = document.getElementById('t').value.trim();
-        const desc = document.getElementById('desc').value.trim();
-        const img = document.getElementById('img').value.trim();
-        const alt = document.getElementById('alt').value.trim();
-        const mensagem = document.getElementById('mensagemInstrumento');
-        const botao = form.querySelector('button[type="submit"]');
+        const mensagem = document.getElementById("mensagemInstrumento");
+        const botao = formInstrumento.querySelector('button[type="submit"]');
 
-        mensagem.className = 'mensagem';
-        mensagem.textContent = '';
+        const instrumento = {
+            nome: document.getElementById("nomeInstrumento").value.trim(),
+            categoria: document.getElementById("categoriaInstrumento").value,
+            descricao: document.getElementById("descricaoInstrumento").value.trim(),
+            imagem: document.getElementById("imagemInstrumento").value.trim()
+        };
 
-        if (!t || !desc || !img || !alt) {
-            mensagem.textContent = 'Preencha todos os campos.';
-            mensagem.classList.add('erro');
+        if (!instrumento.nome || !instrumento.categoria) {
+            mostrarMensagem(
+                mensagem,
+                "Preencha o nome e a categoria do instrumento.",
+                "erro"
+            );
             return;
         }
 
-        const novaObra = new ObraDeArte(t, desc, img, alt);
+        botao.disabled = true;
+        mostrarMensagem(mensagem, "Cadastrando instrumento...", "");
 
         try {
-            botao.disabled = true;
-            mensagem.textContent = 'Enviando instrumento...';
-
-            const resposta = await fetch('/api/lista', {
-                method: 'POST',
+            const resposta = await fetch("/api/instrumentos", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json"
                 },
-                body: JSON.stringify(novaObra)
+                body: JSON.stringify(instrumento)
             });
 
             const resultado = await resposta.json();
 
             if (!resposta.ok) {
                 throw new Error(
-                    resultado.mensagem || 'Não foi possível cadastrar o instrumento.'
+                    resultado.mensagem || "Não foi possível cadastrar o instrumento."
                 );
             }
 
-            console.log('Instrumento cadastrado com sucesso!');
-            console.log(novaObra);
+            formInstrumento.reset();
 
-            mensagem.textContent = resultado.mensagem;
-            mensagem.classList.add('sucesso');
+            mostrarMensagem(
+                mensagem,
+                "Instrumento cadastrado com sucesso!",
+                "sucesso"
+            );
 
-            form.reset();
+            console.log("Instrumento cadastrado:", resultado.instrumento);
 
         } catch (erro) {
-            console.error('Erro ao cadastrar instrumento:', erro);
-
-            mensagem.textContent =
-                'Não foi possível enviar o instrumento. Verifique se o servidor está funcionando.';
-            mensagem.classList.add('erro');
-
+            mostrarMensagem(mensagem, erro.message, "erro");
+            console.error("Erro ao cadastrar instrumento:", erro);
         } finally {
             botao.disabled = false;
         }
@@ -83,40 +122,123 @@ if (form) {
 }
 
 
-// ===========================
-// MODAL DE CONTATO
-// ===========================
+/* ===============================
+   CARREGAR INSTRUMENTOS NO FORMULÁRIO DE PRODUTOS
+================================ */
 
-function abrirContato() {
-    const modal = document.getElementById('modalContato');
+async function carregarInstrumentos() {
+    const select = document.getElementById("instrumentoId");
 
-    if (modal) {
-        modal.style.display = 'flex';
+    if (!select) return;
+
+    select.innerHTML = '<option value="">Carregando instrumentos...</option>';
+
+    try {
+        const resposta = await fetch("/api/instrumentos");
+
+        if (!resposta.ok) {
+            throw new Error("Não foi possível carregar os instrumentos.");
+        }
+
+        const instrumentos = await resposta.json();
+
+        select.innerHTML = "";
+
+        const opcaoInicial = document.createElement("option");
+        opcaoInicial.value = "";
+        opcaoInicial.textContent = "Selecione um instrumento";
+        select.appendChild(opcaoInicial);
+
+        instrumentos.forEach(function (instrumento) {
+            const opcao = document.createElement("option");
+            opcao.value = instrumento.id;
+            opcao.textContent =
+                `${instrumento.nome} — ${instrumento.categoria}`;
+
+            select.appendChild(opcao);
+        });
+
+        if (instrumentos.length === 0) {
+            opcaoInicial.textContent = "Cadastre um instrumento primeiro";
+        }
+
+    } catch (erro) {
+        select.innerHTML = '<option value="">Erro ao carregar instrumentos</option>';
+        console.error("Erro ao carregar instrumentos:", erro);
     }
 }
 
-function fecharContato() {
-    const modal = document.getElementById('modalContato');
+carregarInstrumentos();
 
-    if (modal) {
-        modal.style.display = 'none';
-    }
+
+/* ===============================
+   CADASTRO DE PRODUTOS
+================================ */
+
+const formProduto = document.getElementById("formProduto");
+
+if (formProduto) {
+    formProduto.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const mensagem = document.getElementById("mensagemProduto");
+        const botao = document.getElementById("botaoProduto");
+
+        const produto = {
+            nome: document.getElementById("nomeProduto").value.trim(),
+            instrumentoId: document.getElementById("instrumentoId").value,
+            descricao: document.getElementById("descricaoProduto").value.trim(),
+            preco: document.getElementById("precoProduto").value,
+            imagem: document.getElementById("imagemProduto").value.trim()
+        };
+
+        if (!produto.nome || !produto.instrumentoId ||
+            produto.preco === "") {
+            mostrarMensagem(
+                mensagem,
+                "Preencha o nome, o instrumento e o preço.",
+                "erro"
+            );
+            return;
+        }
+
+        botao.disabled = true;
+        mostrarMensagem(mensagem, "Cadastrando produto...", "");
+
+        try {
+            const resposta = await fetch("/api/produtos", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(produto)
+            });
+
+            const resultado = await resposta.json();
+
+            if (!resposta.ok) {
+                throw new Error(
+                    resultado.mensagem || "Não foi possível cadastrar o produto."
+                );
+            }
+
+            formProduto.reset();
+
+            mostrarMensagem(
+                mensagem,
+                "Produto cadastrado com sucesso!",
+                "sucesso"
+            );
+
+            console.log("Produto cadastrado:", resultado.produto);
+
+            await carregarInstrumentos();
+
+        } catch (erro) {
+            mostrarMensagem(mensagem, erro.message, "erro");
+            console.error("Erro ao cadastrar produto:", erro);
+        } finally {
+            botao.disabled = false;
+        }
+    });
 }
-
-// Fecha o modal ao clicar fora dele
-window.addEventListener('click', function(event) {
-    const modal = document.getElementById('modalContato');
-
-    if (modal && event.target === modal) {
-        modal.style.display = 'none';
-    }
-});
-
-// Fecha o modal ao pressionar ESC
-document.addEventListener('keydown', function(event) {
-    const modal = document.getElementById('modalContato');
-
-    if (event.key === 'Escape' && modal) {
-        modal.style.display = 'none';
-    }
-});

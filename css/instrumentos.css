@@ -1,113 +1,126 @@
 
-/* ===========================
-   CADASTRO DE INSTRUMENTOS
-=========================== */
-
-.cadastro {
+.formulario-instrumento {
     width: 90%;
-    max-width: 600px;
-    box-sizing: border-box;
-    margin: 50px auto;
+    max-width: 560px;
+    margin: 60px auto;
     padding: 35px;
-    background: rgba(20, 20, 20, .85);
-    backdrop-filter: blur(8px);
-    border-radius: 20px;
-    border: 1px solid rgba(212, 175, 55, .25);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    box-sizing: border-box;
+    background: rgba(15, 15, 15, 0.94);
+    border: 1px solid goldenrod;
+    border-radius: 12px;
+    color: #F3E8C8;
 }
 
-.cadastro h1 {
+.formulario-instrumento h1 {
+    margin: 0 0 10px;
     text-align: center;
-    color: #D4AF37;
-    margin-bottom: 30px;
-    text-decoration: none;
+    color: goldenrod;
 }
 
-.cadastro form {
+.formulario-instrumento .subtitulo {
+    margin: 0 0 28px;
+    text-align: center;
+    color: #d5d0c4;
+}
+
+.formulario-instrumento form {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
 }
 
-.cadastro label {
-    color: #F3E8C8;
-    font-size: 16px;
-    font-weight: 500;
+.formulario-instrumento label {
+    margin-top: 8px;
+    font-weight: bold;
 }
 
-.cadastro input,
-.cadastro textarea {
+.formulario-instrumento input,
+.formulario-instrumento select,
+.formulario-instrumento textarea {
     width: 100%;
+    padding: 12px;
     box-sizing: border-box;
-    padding: 14px;
-    border: 1px solid rgba(212, 175, 55, .25);
-    border-radius: 10px;
-    outline: none;
-    font: inherit;
-    font-size: 16px;
-    background: #1B1B1B;
+    border: 1px solid #80651e;
+    border-radius: 6px;
+    background: #202020;
     color: #F3E8C8;
-    transition: .3s;
+    font: inherit;
 }
 
-.cadastro textarea {
+.formulario-instrumento textarea {
+    min-height: 100px;
     resize: vertical;
-    min-height: 110px;
 }
 
-.cadastro input:focus,
-.cadastro textarea:focus {
-    border-color: #D4AF37;
-    box-shadow: 0 0 10px rgba(212, 175, 55, .25);
+.formulario-instrumento input:focus,
+.formulario-instrumento select:focus,
+.formulario-instrumento textarea:focus {
+    outline: 2px solid goldenrod;
+    outline-offset: 1px;
 }
 
-.cadastro input::placeholder,
-.cadastro textarea::placeholder {
-    color: #999;
+.formulario-instrumento select option {
+    background: #202020;
+    color: #F3E8C8;
 }
 
-.btn-cadastro {
-    margin-top: 10px;
-    padding: 15px;
-    background: #1B1B1B;
-    color: #D4AF37;
-    border: 1px solid #D4AF37;
-    border-radius: 10px;
+.formulario-instrumento .btn-cadastro {
+    margin-top: 18px;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    background: goldenrod;
+    color: #151515;
+    font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    transition: .3s;
+    transition: background 0.2s;
 }
 
-.btn-cadastro:hover {
-    background: #D4AF37;
-    color: #111;
-    transform: translateY(-2px);
+.formulario-instrumento .btn-cadastro:hover {
+    background: #df8f45;
 }
 
-.btn-cadastro:disabled {
-    opacity: .6;
+.formulario-instrumento .btn-cadastro:disabled {
+    opacity: 0.6;
     cursor: wait;
-    transform: none;
 }
 
-.mensagem {
-    min-height: 24px;
+.formulario-instrumento .mensagem {
+    margin: 8px 0 0;
     text-align: center;
-    font-weight: bold;
+    overflow-wrap: anywhere;
 }
 
-.erro {
-    color: #ff6b6b;
+.formulario-instrumento .mensagem:empty {
+    display: none;
 }
 
-.sucesso {
-    color: #66d17a;
+.formulario-instrumento .mensagem.sucesso {
+    color: #83d69a;
 }
 
-@media (max-width: 768px) {
-    .cadastro {
-        width: 95%;
-        padding: 25px;
+.formulario-instrumento .mensagem.erro {
+    color: #ff8c8c;
+}
+
+.formulario-instrumento .link-formulario {
+    margin: 24px 0 0;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.formulario-instrumento .link-formulario a {
+    color: goldenrod;
+}
+
+.formulario-instrumento .link-formulario a:hover {
+    color: #df8f45;
+}
+
+@media (max-width: 600px) {
+    .formulario-instrumento {
+        margin: 30px auto;
+        padding: 22px;
     }
 }

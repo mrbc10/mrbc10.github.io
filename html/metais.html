@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -8,143 +9,73 @@
     <title>Metais | Claveon</title>
 
     <link rel="shortcut icon" href="../Imanges/favicon.ico" type="image/x-icon">
-
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/categoria.css">
 </head>
 
-<body>
+<body data-categoria="Metais">
 
-    <!-- Navbar -->
     <nav class="navbar">
-
         <div class="menu">
             <a href="../index.html">Início</a>
             <a href="cadastro.html">Cadastro</a>
-            <a href="#" onclick="abrirContato()">Contato</a>
+            <a href="cadastro-instrumentos.html">Instrumentos</a>
+            <a href="cadastro-produtos.html">Produtos</a>
+            <a href="#" onclick="abrirContato(); return false;">Contato</a>
         </div>
 
         <div class="logo">
-            <img src="../Imanges/claveon.png" alt="Logo" onclick="abrirContato()">
+            <img src="../Imanges/claveon.png" alt="Logo Claveon"
+                 onclick="abrirContato()">
         </div>
-
     </nav>
 
-    <!-- Título -->
     <section class="titulo">
-
         <h1>Metais</h1>
 
         <input
             type="text"
             id="pesquisa"
-            placeholder="Pesquisar produtos...">
-
+            placeholder="Pesquisar instrumentos..."
+            aria-label="Pesquisar instrumentos">
     </section>
 
-    <!-- Produtos -->
-    <section class="produtos">
+    <main>
+        <section class="produtos">
+            <h2 class="titulo-lista">Instrumentos disponíveis</h2>
 
-        <!-- Produto 1 -->
-        <div class="card" data-produto="capa trompete claveon">
-
-            <img src="../Imanges/teste.png" alt="Capa para Trompete">
-
-            <div class="info">
-
-                <span class="marca">Claveon</span>
-
-                <h2>Capa para Trompete</h2>
-
-                <a href="produto.html?id=1" class="btn">
-                    Ver detalhes
-                </a>
-
+            <div id="listaInstrumentos" class="grade-catalogo">
+                <p class="estado-catalogo">Carregando instrumentos...</p>
             </div>
+        </section>
 
-        </div>
+        <section id="secaoProdutos" class="produtos secao-produtos" hidden>
+            <h2 id="tituloProdutos" class="titulo-lista">Produtos disponíveis</h2>
 
-        <!-- Produto 2 -->
-        <div class="card" data-produto="oleo lubrificante yamaha">
+            <button type="button" id="voltarInstrumentos" class="btn-voltar">
+                Voltar para instrumentos
+            </button>
 
-            <img src="../Imanges/teste.png" alt="Óleo Lubrificante">
-
-            <div class="info">
-
-                <span class="marca">Yamaha</span>
-
-                <h2>Óleo Lubrificante</h2>
-
-                <a href="produto.html?id=2" class="btn">
-                    Ver detalhes
-                </a>
-
+            <div id="listaProdutos" class="grade-catalogo">
             </div>
+        </section>
+    </main>
 
-        </div>
-
-        <!-- Produto 3 -->
-        <div class="card" data-produto="bocal trompete michael">
-
-            <img src="../Imanges/teste.png" alt="Bocal para Trompete">
-
-            <div class="info">
-
-                <span class="marca">Michael</span>
-
-                <h2>Bocal para Trompete</h2>
-
-                <a href="produto.html?id=3" class="btn">
-                    Ver detalhes
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- Produto 4 -->
-        <div class="card" data-produto="estojo trompete weril">
-
-            <img src="../Imanges/teste.png" alt="Estojo para Trompete">
-
-            <div class="info">
-
-                <span class="marca">Weril</span>
-
-                <h2>Estojo para Trompete</h2>
-
-                <a href="produto.html?id=4" class="btn">
-                    Ver detalhes
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- Modal de Contato -->
     <div id="modalContato" class="modal">
-
         <div class="modal-conteudo">
-
             <span class="fechar" onclick="fecharContato()">&times;</span>
 
             <h2>Claveon</h2>
-
             <p>E-mail: contato@claveon.com.br</p>
-
             <p>Telefone: (11) 99999-9999</p>
-
             <p>Endereço: São Paulo - SP</p>
-
             <p>Horário: Segunda a Sexta • 09:00 às 18:00</p>
-
         </div>
-
     </div>
+
+    <script src="../js/script.js"></script>
     <script src="../js/instrumentos.js"></script>
 
 </body>
-
 </html>
+    

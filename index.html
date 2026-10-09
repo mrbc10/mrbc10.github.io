@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -18,13 +18,15 @@
 
         <div class="menu">
             <a href="index.html">Início</a>
-            <a href="html/cadastro.html">Cadastro de usuários</a>
-            <a href="html/cadastro-instrumentos.html">Cadastrar instrumentos</a>
+            <a href="html/cadastro.html">Cadastro</a>
+            <a href="html/cadastro-instrumentos.html">Instrumentos</a>
+            <a href="html/cadastro-produtos.html">Produtos</a>
             <a href="#" onclick="abrirContato(); return false;">Contato</a>
         </div>
 
         <div class="logo">
-            <img src="Imanges/claveon.png" alt="Logo" onclick="abrirContato()">
+            <img src="Imanges/claveon.png" alt="Logo Claveon"
+                 onclick="abrirContato()">
         </div>
 
     </nav>
@@ -69,17 +71,17 @@
         <div class="ctimg">
 
             <div class="item">
-                <img src="Imanges/metais.jpg" alt="metais">
+                <img src="Imanges/metais.jpg" alt="Metais">
                 <a href="html/metais.html" class="btn">Metais</a>
             </div>
 
             <div class="item">
-                <img src="Imanges/Cordas.png" alt="cordas">
+                <img src="Imanges/Cordas.png" alt="Cordas">
                 <a href="html/cordas.html" class="btn">Cordas</a>
             </div>
 
             <div class="item">
-                <img src="Imanges/madeira.jpg" alt="madeiras">
+                <img src="Imanges/madeira.jpg" alt="Madeiras">
                 <a href="html/madeiras.html" class="btn">Madeiras</a>
             </div>
 
@@ -90,23 +92,27 @@
     <script src="js/script.js"></script>
 
     <script>
-        fetch('/api/lista')
+        fetch('/api/instrumentos')
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Não foi possível buscar os instrumentos.');
+                    throw new Error(
+                        'Não foi possível buscar os instrumentos.'
+                    );
                 }
 
                 return response.json();
             })
             .then(data => {
-                console.log("Instrumentos cadastrados:", data);
+                console.log('Instrumentos cadastrados:', data);
             })
             .catch(error => {
-                console.error("Erro ao buscar os instrumentos:", error);
+                console.error(
+                    'Erro ao buscar os instrumentos:',
+                    error
+                );
             });
     </script>
 
 </body>
 
 </html>
-```

@@ -1,16 +1,16 @@
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cadastro de Instrumentos | Claveon</title>
-
-    <link rel="shortcut icon" href="../Imanges/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/instrumentos.css">
+    <link rel="shortcut icon" href="../Imanges/favicon.ico" type="image/x-icon">
+
+    <title>Cadastrar Instrumento | Claveon</title>
 </head>
 
 <body>
@@ -18,9 +18,10 @@
     <nav class="navbar">
         <div class="menu">
             <a href="../index.html">Início</a>
-            <a href="cadastro.html">Cadastro de usuários</a>
-            <a href="cadastro-instrumentos.html">Cadastrar instrumentos</a>
-            <a href="#" onclick="abrirContato()">Contato</a>
+            <a href="cadastro.html">Cadastro</a>
+            <a href="cadastro-instrumentos.html">Instrumentos</a>
+            <a href="cadastro-produtos.html">Produtos</a>
+            <a href="#" onclick="abrirContato(); return false;">Contato</a>
         </div>
 
         <div class="logo">
@@ -29,56 +30,9 @@
         </div>
     </nav>
 
-    <section class="cadastro">
-        <h1>Cadastro de instrumentos</h1>
-
-        <form id="formInstrumento">
-
-            <label for="t">Nome do instrumento</label>
-            <input
-                type="text"
-                id="t"
-                name="t"
-                placeholder="Ex.: Trompete"
-                required>
-
-            <label for="desc">Descrição</label>
-            <textarea
-                id="desc"
-                name="desc"
-                placeholder="Descreva o instrumento"
-                rows="4"
-                required></textarea>
-
-            <label for="img">Caminho ou URL da imagem</label>
-            <input
-                type="text"
-                id="img"
-                name="img"
-                placeholder="Ex.: ../Imanges/trompete.jpg"
-                required>
-
-            <label for="alt">Texto alternativo da imagem</label>
-            <input
-                type="text"
-                id="alt"
-                name="alt"
-                placeholder="Ex.: Trompete dourado"
-                required>
-
-            <div id="mensagemInstrumento" class="mensagem"></div>
-
-            <button type="submit" class="btn-cadastro">
-                Cadastrar instrumento
-            </button>
-
-        </form>
-    </section>
-
     <div id="modalContato" class="modal">
         <div class="modal-conteudo">
             <span class="fechar" onclick="fecharContato()">&times;</span>
-
             <h2>Claveon</h2>
             <p>contato@claveon.com.br</p>
             <p>(11) 99999-9999</p>
@@ -87,7 +41,49 @@
         </div>
     </div>
 
-    <script src="../js/script.js"></script>
+    <main class="formulario-instrumento">
+        <h1>Cadastrar instrumento</h1>
+        <p class="subtitulo">Adicione um instrumento ao catálogo da Claveon.</p>
 
+        <form id="formInstrumento">
+
+            <label for="nomeInstrumento">Nome do instrumento</label>
+            <input type="text" id="nomeInstrumento" name="nome"
+                   placeholder="Ex.: Trompete" required>
+
+            <label for="categoriaInstrumento">Categoria</label>
+            <select id="categoriaInstrumento" name="categoria" required>
+                <option value="">Selecione uma categoria</option>
+                <option value="Metais">Metais</option>
+                <option value="Cordas">Cordas</option>
+                <option value="Madeiras">Madeiras</option>
+                <option value="Percussão">Percussão</option>
+                <option value="Teclas">Teclas</option>
+                <option value="Outros">Outros</option>
+            </select>
+
+            <label for="descricaoInstrumento">Descrição</label>
+            <textarea id="descricaoInstrumento" name="descricao"
+                      placeholder="Descreva o instrumento"></textarea>
+
+            <label for="imagemInstrumento">Caminho ou URL da imagem</label>
+            <input type="text" id="imagemInstrumento" name="imagem"
+                   placeholder="Ex.: ../Imanges/trompete.jpg">
+
+            <button type="submit" class="btn-cadastro">
+                Cadastrar instrumento
+            </button>
+
+            <p id="mensagemInstrumento" class="mensagem" role="status"></p>
+        </form>
+
+        <p class="link-formulario">
+            Quer cadastrar produtos?
+            <a href="cadastro-produtos.html">Ir para cadastro de produtos</a>
+        </p>
+    </main>
+
+    <script src="../js/script.js"></script>
 </body>
+
 </html>
