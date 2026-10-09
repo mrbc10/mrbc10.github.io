@@ -1,0 +1,113 @@
+
+/* ===========================
+   CADASTRO DE INSTRUMENTOS
+=========================== */
+
+.cadastro {
+    width: 90%;
+    max-width: 600px;
+    box-sizing: border-box;
+    margin: 50px auto;
+    padding: 35px;
+    background: rgba(20, 20, 20, .85);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, .25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+.cadastro h1 {
+    text-align: center;
+    color: #D4AF37;
+    margin-bottom: 30px;
+    text-decoration: none;
+}
+
+.cadastro form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.cadastro label {
+    color: #F3E8C8;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.cadastro input,
+.cadastro textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 1px solid rgba(212, 175, 55, .25);
+    border-radius: 10px;
+    outline: none;
+    font: inherit;
+    font-size: 16px;
+    background: #1B1B1B;
+    color: #F3E8C8;
+    transition: .3s;
+}
+
+.cadastro textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.cadastro input:focus,
+.cadastro textarea:focus {
+    border-color: #D4AF37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, .25);
+}
+
+.cadastro input::placeholder,
+.cadastro textarea::placeholder {
+    color: #999;
+}
+
+.btn-cadastro {
+    margin-top: 10px;
+    padding: 15px;
+    background: #1B1B1B;
+    color: #D4AF37;
+    border: 1px solid #D4AF37;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btn-cadastro:hover {
+    background: #D4AF37;
+    color: #111;
+    transform: translateY(-2px);
+}
+
+.btn-cadastro:disabled {
+    opacity: .6;
+    cursor: wait;
+    transform: none;
+}
+
+.mensagem {
+    min-height: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.erro {
+    color: #ff6b6b;
+}
+
+.sucesso {
+    color: #66d17a;
+}
+
+@media (max-width: 768px) {
+    .cadastro {
+        width: 95%;
+        padding: 25px;
+    }
+}

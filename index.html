@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,9 +17,10 @@
     <nav class="navbar">
 
         <div class="menu">
-            <a href="#">Início</a>
-            <a href="html/cadastro.html">Cadastro</a>
-            <a href="#">Contato</a>
+            <a href="index.html">Início</a>
+            <a href="html/cadastro.html">Cadastro de usuários</a>
+            <a href="html/cadastro-instrumentos.html">Cadastrar instrumentos</a>
+            <a href="#" onclick="abrirContato(); return false;">Contato</a>
         </div>
 
         <div class="logo">
@@ -88,20 +90,23 @@
     <script src="js/script.js"></script>
 
     <script>
-        fetch('/lista')
-            .then(response => response.json())
+        fetch('/api/lista')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Não foi possível buscar os instrumentos.');
+                }
+
+                return response.json();
+            })
             .then(data => {
-
-                console.log("Resultado retornado pelo fetch():", data);
-
+                console.log("Instrumentos cadastrados:", data);
             })
             .catch(error => {
-
-                console.error("Erro ao buscar a lista:", error);
-
+                console.error("Erro ao buscar os instrumentos:", error);
             });
     </script>
 
 </body>
 
 </html>
+```

@@ -1,4 +1,5 @@
-    // ===========================
+
+ // ===========================
 // MOSTRAR / OCULTAR SENHA
 // ===========================
 
@@ -21,7 +22,7 @@ function toggleSenha(idCampo, botao) {
 
 
 // ===========================
-// VALIDAÇÃO DO FORMULÁRIO
+// VALIDAÇÃO E ENVIO DO CADASTRO
 // ===========================
 
 const formulario = document.getElementById("formCadastro");
@@ -34,7 +35,7 @@ if (!formulario) {
 
     console.log("Sistema de cadastro carregado com sucesso!");
 
-    formulario.addEventListener("submit", function (event) {
+    formulario.addEventListener("submit", async function (event) {
 
         event.preventDefault();
 
@@ -56,7 +57,6 @@ if (!formulario) {
         mensagem.className = "mensagem";
         mensagem.textContent = "";
 
-
         // ===========================
         // VALIDAÇÕES
         // ===========================
@@ -64,7 +64,6 @@ if (!formulario) {
         if (nome.length < 3) {
             mensagem.textContent = "Informe um nome válido.";
             mensagem.classList.add("erro");
-
             console.warn("Cadastro recusado: nome inválido.");
             return;
         }
@@ -72,7 +71,6 @@ if (!formulario) {
         if (!email.includes("@") || !email.includes(".")) {
             mensagem.textContent = "Digite um e-mail válido.";
             mensagem.classList.add("erro");
-
             console.warn("Cadastro recusado: e-mail inválido.");
             return;
         }
@@ -80,7 +78,6 @@ if (!formulario) {
         if (telefone.length < 10) {
             mensagem.textContent = "Digite um telefone válido.";
             mensagem.classList.add("erro");
-
             console.warn("Cadastro recusado: telefone inválido.");
             return;
         }
@@ -88,7 +85,6 @@ if (!formulario) {
         if (senha.length < 8) {
             mensagem.textContent = "A senha deve possuir no mínimo 8 caracteres.";
             mensagem.classList.add("erro");
-
             console.warn("Cadastro recusado: senha muito curta.");
             return;
         }
@@ -96,33 +92,9 @@ if (!formulario) {
         if (senha !== confirmarSenha) {
             mensagem.textContent = "As senhas não coincidem.";
             mensagem.classList.add("erro");
-
             console.warn("Cadastro recusado: as senhas não coincidem.");
             return;
         }
-
-
-        // ===========================
-        // RECUPERAR CADASTROS SALVOS
-        // ===========================
-
-        let cadastros = [];
-
-        try {
-            cadastros = JSON.parse(localStorage.getItem("cadastros")) || [];
-
-            if (!Array.isArray(cadastros)) {
-                cadastros = [];
-            }
-
-        } catch (erro) {
-            console.error("Erro ao recuperar os cadastros:", erro);
-
-            mensagem.textContent = "Erro ao recuperar os cadastros salvos.";
-            mensagem.classList.add("erro");
-            return;
-        }
-
 
         // ===========================
         // CRIAR NOVO CADASTRO
@@ -135,74 +107,85 @@ if (!formulario) {
             senha: senha
         };
 
-
         // ===========================
-        // SALVAR CADASTRO
+        // ENVIAR CADASTRO AO SERVIDOR
         // ===========================
-
-        cadastros.push(novoCadastro);
 
         try {
-            localStorage.setItem("cadastros", JSON.stringify(cadastros));
+            mensagem.textContent = "Enviando cadastro...";
+            formulario.querySelectorAll("input, button").forEach(elemento => {
+                elemento.disabled = true;
+            });
+
+            const resposta = await fetch("/api/cadastro", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(novoCadastro)
+            });
+
+            const resultado = await resposta.json();
+
+            if (!resposta.ok) {
+                throw new Error(
+                    resultado.mensagem || "Não foi possível realizar o cadastro."
+                );
+            }
+
+            console.log("================================");
+            console.log("CADASTRO ENVIADO AO SERVIDOR!");
+            console.log("Nome:", nome);
+            console.log("E-mail:", email);
+            console.log("Telefone:", telefone);
+            console.log("Resposta do servidor:", resultado.mensagem);
+            console.log("================================");
+
+            // ===========================
+            // MENSAGEM DE SUCESSO
+            // ===========================
+
+            mensagem.textContent = "Cadastro realizado com sucesso!";
+            mensagem.classList.add("sucesso");
+
+            // ===========================
+            // LIMPAR CAMPOS
+            // ===========================
+
+            formulario.reset();
+
+            document.getElementById("senha").type = "password";
+            document.getElementById("confirmarSenha").type = "password";
+
+            document.querySelectorAll(".btn-olho").forEach(botao => {
+                botao.textContent = "Ver";
+            });
+
+            // ===========================
+            // REMOVER MENSAGEM
+            // ===========================
+
+            setTimeout(() => {
+                mensagem.textContent = "";
+                mensagem.className = "mensagem";
+            }, 3000);
 
         } catch (erro) {
-            console.error("Erro ao salvar o cadastro:", erro);
+            console.error("Erro ao enviar cadastro:", erro);
 
-            cadastros.pop();
+            mensagem.textContent =
+                erro.message === "Failed to fetch"
+                    ? "Não foi possível conectar ao servidor. Verifique se ele está iniciado."
+                    : erro.message || "Ocorreu um erro ao realizar o cadastro.";
 
-            mensagem.textContent = "Não foi possível salvar o cadastro.";
             mensagem.classList.add("erro");
-            return;
+
+        } finally {
+            formulario.querySelectorAll("input, button").forEach(elemento => {
+                elemento.disabled = false;
+            });
         }
-
-
-        // ===========================
-        // MOSTRAR NO CONSOLE
-        // ===========================
-
-        console.log("================================");
-        console.log("CADASTRO REALIZADO COM SUCESSO!");
-        console.log("Nome:", nome);
-        console.log("E-mail:", email);
-        console.log("Telefone:", telefone);
-        console.log("Total de cadastros:", cadastros.length);
-        console.log("Todos os cadastros:", cadastros);
-        console.log("================================");
-
-
-        // ===========================
-        // MENSAGEM DE SUCESSO
-        // ===========================
-
-        mensagem.textContent = "Cadastro realizado com sucesso!";
-        mensagem.classList.add("sucesso");
-
-
-        // ===========================
-        // LIMPAR CAMPOS
-        // ===========================
-
-        formulario.reset();
-
-        document.getElementById("senha").type = "password";
-        document.getElementById("confirmarSenha").type = "password";
-
-        document.querySelectorAll(".btn-olho").forEach(botao => {
-            botao.textContent = "Ver";
-        });
-
-
-        // ===========================
-        // REMOVER MENSAGEM
-        // ===========================
-
-        setTimeout(() => {
-            mensagem.textContent = "";
-            mensagem.className = "mensagem";
-        }, 3000);
-
     });
-
 }
 
 
@@ -272,18 +255,7 @@ document.addEventListener("keydown", function (event) {
 
 
 // ===========================
-// VERIFICAR CADASTROS SALVOS
+// VERIFICAR SISTEMA
 // ===========================
 
-try {
-    const cadastrosSalvos = JSON.parse(
-        localStorage.getItem("cadastros")
-    ) || [];
-
-    console.log("Cadastros existentes no navegador:", cadastrosSalvos.length);
-    console.log("Sistema de cadastro pronto.");
-
-} catch (erro) {
-    console.error("Erro ao verificar os cadastros existentes:", erro);
-}
-
+console.log("Sistema de cadastro pronto.");
