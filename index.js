@@ -26,6 +26,7 @@ app.get('/html/index.html', (req, res) => {
 // Dados armazenados temporariamente na memória
 let usuarios = [];
 let instrumentos = [];
+let favoritos = [];
 
 // Lista de obras de arte
 let lista = [
@@ -158,6 +159,155 @@ app.post('/api/instrumentos', (req, res) => {
 // Retorna todos os instrumentos
 app.get('/api/instrumentos', (req, res) => {
     res.json(instrumentos);
+});
+
+
+// ===============================
+// SISTEMA DE FAVORITOS
+// ===============================
+
+// Adiciona um instrumento aos favoritos
+app.post('/api/favoritos', (req, res) => {
+
+    const { emailUsuario, idInstrumento } = req.body;
+
+    if (
+        typeof emailUsuario !== 'string' ||
+        !emailUsuario.trim() ||
+        !Number.isInteger(Number(idInstrumento))
+    ) {
+        return res.status(400).json({
+            status: 'erro',
+            mensagem: 'Informe um usuário e um instrumento válido.'
+        });
+    }
+
+    const emailNormalizado = emailUsuario.trim().toLowerCase();
+    const id = Number(idInstrumento);
+
+    // Verifica se o usuário existe
+    const usuarioEncontrado = usuarios.find(usuario =>
+        typeof usuario.email === 'string' &&
+        usuario.email.trim().toLowerCase() === emailNormalizado
+    );
+
+    if (!usuarioEncontrado) {
+        return res.status(404).json({
+            status: 'erro',
+            mensagem: 'Usuário não encontrado.'
+        });
+    }
+
+    // Verifica se o instrumento existe
+    const instrumentoEncontrado = instrumentos.find(
+        instrumento => instrumento.id === id
+    );
+
+    if (!instrumentoEncontrado) {
+        return res.status(404).json({
+            status: 'erro',
+            mensagem: 'Instrumento não encontrado.'
+        });
+    }
+
+    // Impede favoritos duplicados
+    const jaFavoritado = favoritos.some(favorito =>
+        favorito.emailUsuario === emailNormalizado &&
+        favorito.idInstrumento === id
+    );
+
+    if (jaFavoritado) {
+        return res.status(409).json({
+            status: 'erro',
+            mensagem: 'Este instrumento já está nos seus favoritos.'
+        });
+    }
+
+    const novoFavorito = {
+        emailUsuario: emailNormalizado,
+        idInstrumento: id
+    };
+
+    favoritos.push(novoFavorito);
+
+    console.log('Novo favorito adicionado!');
+    console.log(novoFavorito);
+
+    res.status(201).json({
+        status: 'sucesso',
+        mensagem: 'Instrumento adicionado aos favoritos!'
+    });
+});
+
+
+// Consulta os favoritos de um usuário
+app.get('/api/favoritos', (req, res) => {
+
+    const email = req.query.email;
+
+    if (typeof email !== 'string' || !email.trim()) {
+        return res.status(400).json({
+            status: 'erro',
+            mensagem: 'Informe o e-mail do usuário.'
+        });
+    }
+
+    const emailNormalizado = email.trim().toLowerCase();
+
+    const favoritosUsuario = favoritos
+        .filter(favorito =>
+            favorito.emailUsuario === emailNormalizado
+        )
+        .map(favorito => {
+            return instrumentos.find(
+                instrumento => instrumento.id === favorito.idInstrumento
+            );
+        })
+        .filter(instrumento => instrumento !== undefined);
+
+    res.json(favoritosUsuario);
+});
+
+
+// Remove um instrumento dos favoritos
+app.delete('/api/favoritos', (req, res) => {
+
+    const { emailUsuario, idInstrumento } = req.body;
+
+    if (
+        typeof emailUsuario !== 'string' ||
+        !emailUsuario.trim() ||
+        !Number.isInteger(Number(idInstrumento))
+    ) {
+        return res.status(400).json({
+            status: 'erro',
+            mensagem: 'Informe um usuário e um instrumento válido.'
+        });
+    }
+
+    const emailNormalizado = emailUsuario.trim().toLowerCase();
+    const id = Number(idInstrumento);
+
+    const indice = favoritos.findIndex(favorito =>
+        favorito.emailUsuario === emailNormalizado &&
+        favorito.idInstrumento === id
+    );
+
+    if (indice === -1) {
+        return res.status(404).json({
+            status: 'erro',
+            mensagem: 'Favorito não encontrado.'
+        });
+    }
+
+    favoritos.splice(indice, 1);
+
+    console.log('Favorito removido!');
+
+    res.json({
+        status: 'sucesso',
+        mensagem: 'Instrumento removido dos favoritos!'
+    });
 });
 
 

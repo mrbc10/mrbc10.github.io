@@ -47,21 +47,13 @@ function toggleSenha(idCampo, botao) {
 const formulario = document.getElementById("formCadastro");
 
 if (!formulario) {
-    console.error(
-        'Erro: formulário com id="formCadastro" não encontrado. Verifique o cadastro.html.'
-    );
+    console.error('Erro: formulário com id="formCadastro" não encontrado.');
 
 } else {
-
     console.log("Sistema de cadastro carregado com sucesso!");
 
     formulario.addEventListener("submit", async function(event) {
-
         event.preventDefault();
-
-        console.log("Envio do formulário iniciado.");
-
-        // Capturar os valores dos campos
 
         const nome = document.getElementById("nome").value.trim();
         const email = document.getElementById("email").value.trim();
@@ -86,40 +78,35 @@ if (!formulario) {
         if (nome.length < 3) {
             mensagem.textContent = "Informe um nome válido.";
             mensagem.classList.add("erro");
-            console.warn("Cadastro recusado: nome inválido.");
             return;
         }
 
         if (!email.includes("@") || !email.includes(".")) {
             mensagem.textContent = "Digite um e-mail válido.";
             mensagem.classList.add("erro");
-            console.warn("Cadastro recusado: e-mail inválido.");
             return;
         }
 
         if (telefone.length < 10) {
             mensagem.textContent = "Digite um telefone válido.";
             mensagem.classList.add("erro");
-            console.warn("Cadastro recusado: telefone inválido.");
             return;
         }
 
         if (senha.length < 8) {
             mensagem.textContent = "A senha deve possuir no mínimo 8 caracteres.";
             mensagem.classList.add("erro");
-            console.warn("Cadastro recusado: senha muito curta.");
             return;
         }
 
         if (senha !== confirmarSenha) {
             mensagem.textContent = "As senhas não coincidem.";
             mensagem.classList.add("erro");
-            console.warn("Cadastro recusado: as senhas não coincidem.");
             return;
         }
 
         // ===========================
-        // CRIAR OBJETO COM A CLASSE
+        // CRIAR OBJETO CADASTRO
         // ===========================
 
         const novoCadastro = new Cadastro(
@@ -134,7 +121,6 @@ if (!formulario) {
         // ===========================
 
         try {
-
             mensagem.textContent = "Enviando cadastro...";
 
             formulario.querySelectorAll("input, button").forEach(elemento => {
@@ -143,11 +129,9 @@ if (!formulario) {
 
             const resposta = await fetch("/api/cadastro", {
                 method: "POST",
-
                 headers: {
                     "Content-Type": "application/json"
                 },
-
                 body: JSON.stringify(novoCadastro)
             });
 
@@ -174,6 +158,12 @@ if (!formulario) {
             mensagem.textContent = "Cadastro realizado com sucesso!";
             mensagem.classList.add("sucesso");
 
+            // Salvar e-mail para identificar os favoritos
+            localStorage.setItem(
+                "emailUsuarioClaveon",
+                email.toLowerCase()
+            );
+
             // ===========================
             // LIMPAR CAMPOS
             // ===========================
@@ -196,7 +186,6 @@ if (!formulario) {
             }, 1500);
 
         } catch (erro) {
-
             console.error("Erro ao enviar cadastro:", erro);
 
             mensagem.textContent =
@@ -207,11 +196,9 @@ if (!formulario) {
             mensagem.classList.add("erro");
 
         } finally {
-
             formulario.querySelectorAll("input, button").forEach(elemento => {
                 elemento.disabled = false;
             });
-
         }
     });
 }
@@ -222,7 +209,6 @@ if (!formulario) {
 // ===========================
 
 function abrirContato() {
-
     const modal = document.getElementById("modalContato");
 
     if (!modal) {
@@ -231,13 +217,11 @@ function abrirContato() {
     }
 
     modal.style.display = "flex";
-
     console.log("Modal de contato aberto.");
 }
 
 
 function fecharContato() {
-
     const modal = document.getElementById("modalContato");
 
     if (!modal) {
@@ -246,7 +230,6 @@ function fecharContato() {
     }
 
     modal.style.display = "none";
-
     console.log("Modal de contato fechado.");
 }
 
@@ -256,14 +239,12 @@ function fecharContato() {
 // ===========================
 
 window.addEventListener("click", function(event) {
-
     const modal = document.getElementById("modalContato");
 
     if (modal && event.target === modal) {
         modal.style.display = "none";
         console.log("Modal fechado ao clicar fora.");
     }
-
 });
 
 
@@ -272,13 +253,11 @@ window.addEventListener("click", function(event) {
 // ===========================
 
 document.addEventListener("keydown", function(event) {
-
     const modal = document.getElementById("modalContato");
 
     if (event.key === "Escape" && modal) {
         modal.style.display = "none";
     }
-
 });
 
 

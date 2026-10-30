@@ -1,13 +1,22 @@
 
-// ===============================
+// ===========================
 // CATÁLOGO DE INSTRUMENTOS
-// ===============================
+// ===========================
+
+// E-mail do usuário que está utilizando o catálogo
+function obterEmailUsuario() {
+    return localStorage.getItem("emailUsuarioClaveon") || "";
+}
+
+
+// ===========================
+// CARREGAR CATÁLOGO
+// ===========================
 
 async function carregarCatalogo() {
 
     const container = document.getElementById("listaInstrumentos");
 
-    // Verifica se a página possui o catálogo
     if (!container) return;
 
     try {
@@ -22,7 +31,6 @@ async function carregarCatalogo() {
 
         container.innerHTML = "";
 
-        // Verifica se existem instrumentos cadastrados
         if (!Array.isArray(instrumentos) || instrumentos.length === 0) {
 
             const mensagem = document.createElement("p");
@@ -30,20 +38,33 @@ async function carregarCatalogo() {
             mensagem.textContent = "Nenhum instrumento foi cadastrado ainda.";
 
             container.appendChild(mensagem);
-
             return;
         }
 
-        // Percorre os instrumentos recebidos do servidor
-        instrumentos.forEach(function (instrumento) {
+        const emailUsuario = obterEmailUsuario();
 
-            // Cria o card
+        let favoritosUsuario = [];
+
+        // Carrega os favoritos do usuário
+        if (emailUsuario) {
+
+            const respostaFavoritos = await fetch(
+                `/api/favoritos?email=${encodeURIComponent(emailUsuario)}`
+            );
+
+            if (respostaFavoritos.ok) {
+                favoritosUsuario = await respostaFavoritos.json();
+            }
+        }
+
+        instrumentos.forEach(function(instrumento) {
+
             const card = document.createElement("article");
             card.classList.add("card-instrumento");
 
-            // ===============================
-            // ÁREA DA IMAGEM
-            // ===============================
+            // ===========================
+            // IMAGEM
+            // ===========================
 
             const imagemContainer = document.createElement("div");
             imagemContainer.classList.add("imagem-instrumento");
@@ -55,7 +76,7 @@ async function carregarCatalogo() {
                 imagem.src = instrumento.imagem;
                 imagem.alt = instrumento.nome || "Instrumento";
 
-                imagem.addEventListener("error", function () {
+                imagem.addEventListener("error", function() {
 
                     imagemContainer.innerHTML = "";
 
@@ -77,9 +98,10 @@ async function carregarCatalogo() {
                 imagemContainer.appendChild(aviso);
             }
 
-            // ===============================
-            // ÁREA DAS INFORMAÇÕES
-            // ===============================
+
+            // ===========================
+            // INFORMAÇÕES
+            // ===========================
 
             const informacoes = document.createElement("div");
             informacoes.classList.add("informacoes-instrumento");
@@ -92,10 +114,6 @@ async function carregarCatalogo() {
             descricao.textContent =
                 instrumento.descricao || "Nenhuma descrição informada.";
 
-            // ===============================
-            // RESPONSÁVEL PELO CADASTRO
-            // ===============================
-
             const responsavel = document.createElement("div");
             responsavel.classList.add("responsavel-instrumento");
 
@@ -106,28 +124,120 @@ async function carregarCatalogo() {
             nomeUsuario.textContent =
                 "Nome: " + (instrumento.usuario?.nome || "Não informado");
 
-            const emailUsuario = document.createElement("p");
-            emailUsuario.textContent =
+            const emailUsuarioInstrumento = document.createElement("p");
+            emailUsuarioInstrumento.textContent =
                 "E-mail: " + (instrumento.usuario?.email || "Não informado");
 
-            // Monta as informações do responsável
             responsavel.appendChild(tituloResponsavel);
             responsavel.appendChild(nomeUsuario);
-            responsavel.appendChild(emailUsuario);
+            responsavel.appendChild(emailUsuarioInstrumento);
 
-            // ===============================
-            // MONTAGEM DO CARD
-            // ===============================
+
+            // ===========================
+            // BOTÃO DE FAVORITOS
+            // ===========================
+
+            const botaoFavorito = document.createElement("button");
+
+            botaoFavorito.type = "button";
+            botaoFavorito.classList.add("btn-favorito");
+
+            const estaFavoritado = favoritosUsuario.some(
+                favorito => favorito.id === instrumento.id
+            );
+
+            botaoFavorito.textContent = estaFavoritado ? "♥ Favoritado" : "♡ Favoritar";
+
+            if (estaFavoritado) {
+                botaoFavorito.classList.add("favoritado");
+            }
+
+            botaoFavorito.addEventListener("click", async function() {
+
+                const email = obterEmailUsuario();
+
+                if (!email) {
+                    alert("Informe seu e-mail para utilizar os favoritos.");
+                    return;
+                }
+
+                botaoFavorito.disabled = true;
+
+                try {
+
+                    let resposta;
+
+                    if (botaoFavorito.classList.contains("favoritado")) {
+
+                        resposta = await fetch("/api/favoritos", {
+                            method: "DELETE",
+
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                emailUsuario: email,
+                                idInstrumento: instrumento.id
+                            })
+                        });
+
+                    } else {
+
+                        resposta = await fetch("/api/favoritos", {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                emailUsuario: email,
+                                idInstrumento: instrumento.id
+                            })
+                        });
+                    }
+
+                    const resultado = await resposta.json();
+
+                    if (!resposta.ok) {
+                        throw new Error(resultado.mensagem);
+                    }
+
+                    botaoFavorito.classList.toggle("favoritado");
+
+                    const agoraFavoritado =
+                        botaoFavorito.classList.contains("favoritado");
+
+                    botaoFavorito.textContent =
+                        agoraFavoritado ? "♥ Favoritado" : "♡ Favoritar";
+
+                    alert(resultado.mensagem);
+
+                } catch (erro) {
+
+                    alert(erro.message || "Não foi possível atualizar os favoritos.");
+
+                } finally {
+
+                    botaoFavorito.disabled = false;
+                }
+            });
+
+
+            // ===========================
+            // MONTAR CARD
+            // ===========================
 
             informacoes.appendChild(nome);
             informacoes.appendChild(descricao);
+            informacoes.appendChild(botaoFavorito);
             informacoes.appendChild(responsavel);
 
             card.appendChild(imagemContainer);
             card.appendChild(informacoes);
 
             container.appendChild(card);
-
         });
 
     } catch (erro) {
@@ -135,6 +245,7 @@ async function carregarCatalogo() {
         console.error("Erro ao carregar catálogo:", erro);
 
         const mensagem = document.createElement("p");
+
         mensagem.classList.add("estado-catalogo");
         mensagem.textContent =
             "Não foi possível carregar os instrumentos. Tente novamente mais tarde.";
@@ -144,5 +255,9 @@ async function carregarCatalogo() {
     }
 }
 
-// Carrega o catálogo quando a página abre
+
+// ===========================
+// INICIAR CATÁLOGO
+// ===========================
+
 carregarCatalogo();
