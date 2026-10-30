@@ -1,5 +1,19 @@
 
- // ===========================
+// ===========================
+// CLASSE CADASTRO
+// ===========================
+
+class Cadastro {
+    constructor(nome, email, telefone, senha) {
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.senha = senha;
+    }
+}
+
+
+// ===========================
 // MOSTRAR / OCULTAR SENHA
 // ===========================
 
@@ -8,6 +22,11 @@ function toggleSenha(idCampo, botao) {
 
     if (!campo) {
         console.error("Campo de senha não encontrado:", idCampo);
+        return;
+    }
+
+    if (!botao) {
+        console.error("Botão de senha não encontrado.");
         return;
     }
 
@@ -31,15 +50,18 @@ if (!formulario) {
     console.error(
         'Erro: formulário com id="formCadastro" não encontrado. Verifique o cadastro.html.'
     );
+
 } else {
 
     console.log("Sistema de cadastro carregado com sucesso!");
 
-    formulario.addEventListener("submit", async function (event) {
+    formulario.addEventListener("submit", async function(event) {
 
         event.preventDefault();
 
         console.log("Envio do formulário iniciado.");
+
+        // Capturar os valores dos campos
 
         const nome = document.getElementById("nome").value.trim();
         const email = document.getElementById("email").value.trim();
@@ -97,31 +119,35 @@ if (!formulario) {
         }
 
         // ===========================
-        // CRIAR NOVO CADASTRO
+        // CRIAR OBJETO COM A CLASSE
         // ===========================
 
-        const novoCadastro = {
-            nome: nome,
-            email: email,
-            telefone: telefone,
-            senha: senha
-        };
+        const novoCadastro = new Cadastro(
+            nome,
+            email,
+            telefone,
+            senha
+        );
 
         // ===========================
         // ENVIAR CADASTRO AO SERVIDOR
         // ===========================
 
         try {
+
             mensagem.textContent = "Enviando cadastro...";
+
             formulario.querySelectorAll("input, button").forEach(elemento => {
                 elemento.disabled = true;
             });
 
             const resposta = await fetch("/api/cadastro", {
                 method: "POST",
+
                 headers: {
                     "Content-Type": "application/json"
                 },
+
                 body: JSON.stringify(novoCadastro)
             });
 
@@ -162,15 +188,15 @@ if (!formulario) {
             });
 
             // ===========================
-            // REMOVER MENSAGEM
+            // REDIRECIONAR PARA INDEX
             // ===========================
 
             setTimeout(() => {
-                mensagem.textContent = "";
-                mensagem.className = "mensagem";
-            }, 3000);
+                window.location.href = "/index.html";
+            }, 1500);
 
         } catch (erro) {
+
             console.error("Erro ao enviar cadastro:", erro);
 
             mensagem.textContent =
@@ -181,9 +207,11 @@ if (!formulario) {
             mensagem.classList.add("erro");
 
         } finally {
+
             formulario.querySelectorAll("input, button").forEach(elemento => {
                 elemento.disabled = false;
             });
+
         }
     });
 }
@@ -227,7 +255,7 @@ function fecharContato() {
 // FECHAR CLICANDO FORA
 // ===========================
 
-window.addEventListener("click", function (event) {
+window.addEventListener("click", function(event) {
 
     const modal = document.getElementById("modalContato");
 
@@ -243,7 +271,7 @@ window.addEventListener("click", function (event) {
 // FECHAR COM ESC
 // ===========================
 
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keydown", function(event) {
 
     const modal = document.getElementById("modalContato");
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -7,6 +8,7 @@
 
     <title>Cadastro | Claveon</title>
 
+    <!-- Ícone e folhas de estilo -->
     <link rel="shortcut icon" href="../Imanges/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/cadastro.css">
@@ -14,28 +16,37 @@
 
 <body>
 
+    <!-- ===========================
+         MENU DE NAVEGAÇÃO
+    ============================ -->
+
     <nav class="navbar">
+
         <div class="menu">
             <a href="../index.html">Início</a>
-            <a href="cadastro.html">Cadastro de usuários</a>
-            <a href="cadastro-instrumentos.html">Cadastrar instrumentos</a>
-            <a href="#" onclick="abrirContato()">Contato</a>
+            <a href="cadastro.html">Cadastro</a>
+            <a href="cadastro-instrumentos.html">Cadastrar instrumento</a>
+            <a href="catalogo-instrumentos.html">Catálogo</a>
+            <a href="#" onclick="abrirContato(); return false;">Contato</a>
         </div>
 
-        <div class="logo">
-            <img src="../Imanges/claveon.png" alt="Logo Claveon"
-                 onclick="abrirContato()">
-        </div>
     </nav>
 
-    <!-- Card de Cadastro -->
+
+    <!-- ===========================
+         FORMULÁRIO DE CADASTRO
+    ============================ -->
+
     <section class="cadastro">
 
         <h1>Crie sua conta</h1>
 
         <form id="formCadastro">
 
+            <!-- Nome -->
+
             <label for="nome">Nome completo</label>
+
             <input
                 type="text"
                 id="nome"
@@ -43,7 +54,11 @@
                 placeholder="Digite seu nome completo"
                 required>
 
+
+            <!-- E-mail -->
+
             <label for="email">E-mail</label>
+
             <input
                 type="email"
                 id="email"
@@ -51,13 +66,20 @@
                 placeholder="Digite seu e-mail"
                 required>
 
+
+            <!-- Telefone -->
+
             <label for="telefone">Telefone</label>
+
             <input
                 type="tel"
                 id="telefone"
                 name="telefone"
                 placeholder="(00) 00000-0000"
                 required>
+
+
+            <!-- Senha -->
 
             <label for="senha">Senha</label>
 
@@ -79,6 +101,9 @@
 
             </div>
 
+
+            <!-- Confirmar senha -->
+
             <label for="confirmarSenha">Confirmar senha</label>
 
             <div class="campo-senha">
@@ -99,8 +124,18 @@
 
             </div>
 
-            <!-- Mensagens -->
-            <div id="mensagem" class="mensagem"></div>
+
+            <!-- Mensagens de validação -->
+
+            <div
+                id="mensagem"
+                class="mensagem"
+                role="status"
+                aria-live="polite">
+            </div>
+
+
+            <!-- Botão de cadastro -->
 
             <button type="submit" class="btn-cadastro">
                 Criar conta
@@ -108,19 +143,33 @@
 
         </form>
 
+
+        <!-- Link para login -->
+
         <p class="login">
+
             Já possui uma conta?
+
             <a href="login.html">Entrar</a>
+
         </p>
 
     </section>
 
-    <!-- Modal de Contato -->
+
+    <!-- ===========================
+         MODAL DE CONTATO
+    ============================ -->
+
     <div id="modalContato" class="modal">
 
         <div class="modal-conteudo">
 
-            <span class="fechar" onclick="fecharContato()">&times;</span>
+            <span
+                class="fechar"
+                onclick="fecharContato()">
+                &times;
+            </span>
 
             <h2>Claveon</h2>
 
@@ -137,9 +186,12 @@
     </div>
 
 
-    
+    <!-- ===========================
+         JAVASCRIPT
+    ============================ -->
 
-    <script src="../js/cadastro.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/cadastro.js" defer></script>
 
 </body>
 

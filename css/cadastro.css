@@ -4,349 +4,290 @@
 =========================== */
 
 .cadastro {
-
     width: 90%;
     max-width: 520px;
+    box-sizing: border-box;
 
     margin: 60px auto;
-
     padding: 35px;
 
-    background: rgba(20,20,20,.75);
-
+    background: rgba(20, 20, 20, 0.75);
     backdrop-filter: blur(8px);
 
     border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.25);
 
-    border: 1px solid rgba(212,175,55,.25);
-
-    box-shadow: 0 10px 30px rgba(0,0,0,.35);
-
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-.cadastro h1{
+.cadastro h1 {
+    text-align: center;
+    color: #D4AF37;
 
-    text-align:center;
-
-    color:#D4AF37;
-
-    margin-bottom:30px;
-
-    text-decoration:none;
-
+    margin-bottom: 30px;
+    text-decoration: none;
 }
 
-.cadastro form{
+/* ===========================
+   FORMULÁRIO
+=========================== */
 
-    display:flex;
-
-    flex-direction:column;
-
-    gap:18px;
-
+.cadastro form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 
-.cadastro label{
-
-    color:#F3E8C8;
-
-    font-size:17px;
-
-    font-weight:500;
-
+.cadastro label {
+    color: #F3E8C8;
+    font-size: 17px;
+    font-weight: 500;
 }
 
-.cadastro input{
+.cadastro input {
+    width: 100%;
+    box-sizing: border-box;
 
-    width:100%;
+    padding: 14px;
 
-    box-sizing:border-box;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 10px;
 
-    padding:14px;
+    outline: none;
 
-    border:none;
+    font-size: 16px;
 
-    border-radius:10px;
+    background: #1B1B1B;
+    color: #F3E8C8;
 
-    outline:none;
-
-    font-size:16px;
-
-    background:#1B1B1B;
-
-    color:#F3E8C8;
-
-    border:1px solid rgba(212,175,55,.25);
-
-    transition:.3s;
-
+    transition: 0.3s;
 }
 
-.cadastro input:focus{
-
-    border-color:#D4AF37;
-
-    box-shadow:0 0 10px rgba(212,175,55,.25);
-
+.cadastro input:focus {
+    border-color: #D4AF37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
 }
 
-.cadastro input::placeholder{
-
-    color:#999;
-
+.cadastro input::placeholder {
+    color: #999;
 }
 
 /* ===========================
    SENHA
 =========================== */
 
-.campo-senha{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
+.campo-senha {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
 }
 
-.campo-senha input{
-
-    flex:1;
-
+.campo-senha input {
+    flex: 1;
+    min-width: 0;
 }
 
-.btn-olho{
+.btn-olho {
+    padding: 8px 12px;
+    min-width: 65px;
 
-    padding:8px 12px;
+    background: #1B1B1B;
+    color: #D4AF37;
 
-    min-width:60px;
+    border: 1px solid #D4AF37;
+    border-radius: 8px;
 
-    background:#1B1B1B;
+    cursor: pointer;
+    font-size: 13px;
 
-    color:#D4AF37;
-
-    border:1px solid #D4AF37;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    font-size:13px;
-
-    transition:.3s;
-
+    transition: 0.3s;
 }
 
-.btn-olho:hover{
-
-    background:#D4AF37;
-
-    color:#111;
-
+.btn-olho:hover {
+    background: #D4AF37;
+    color: #111;
 }
 
 /* ===========================
-   BOTÃO
+   BOTÃO DE CADASTRO
 =========================== */
 
-.btn-cadastro{
+.btn-cadastro {
+    width: 100%;
 
-    margin-top:10px;
+    margin-top: 10px;
+    padding: 15px;
 
-    padding:15px;
+    background: #1B1B1B;
+    color: #D4AF37;
 
-    background:#1B1B1B;
+    border: 1px solid #D4AF37;
+    border-radius: 10px;
 
-    color:#D4AF37;
+    cursor: pointer;
 
-    border:1px solid #D4AF37;
+    font-size: 18px;
+    font-weight: bold;
 
-    border-radius:10px;
-
-    cursor:pointer;
-
-    font-size:18px;
-
-    font-weight:bold;
-
-    transition:.3s;
-
+    transition: 0.3s;
 }
 
-.btn-cadastro:hover{
+.btn-cadastro:hover {
+    background: #D4AF37;
+    color: #111;
+    transform: translateY(-2px);
+}
 
-    background:#D4AF37;
+/* ===========================
+   BOTÕES DESATIVADOS
+=========================== */
 
-    color:#111;
-
-    transform:translateY(-2px);
-
+.btn-cadastro:disabled,
+.btn-olho:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
 }
 
 /* ===========================
    MENSAGENS
 =========================== */
 
-.mensagem{
-
-    min-height:24px;
-
-    text-align:center;
-
-    font-weight:bold;
-
+.mensagem {
+    min-height: 24px;
+    text-align: center;
+    font-weight: bold;
 }
 
-.erro{
-
-    color:#ff6b6b;
-
+.erro {
+    color: #ff6b6b;
 }
 
-.sucesso{
-
-    color:#66d17a;
-
+.sucesso {
+    color: #66d17a;
 }
 
 /* ===========================
    LOGIN
 =========================== */
 
-.login{
-
-    text-align:center;
-
-    margin-top:25px;
-
-    color:#E8DCC2;
-
+.login {
+    text-align: center;
+    margin-top: 25px;
+    color: #E8DCC2;
 }
 
-.login a{
-
-    color:#D4AF37;
-
-    text-decoration:none;
-
+.login a {
+    color: #D4AF37;
+    text-decoration: none;
 }
 
-.login a:hover{
-
-    text-decoration:underline;
-
+.login a:hover {
+    text-decoration: underline;
 }
 
 /* ===========================
    MODAL
 =========================== */
 
-.modal{
+.modal {
+    display: none;
 
-    display:none;
+    position: fixed;
+    inset: 0;
 
-    position:fixed;
+    justify-content: center;
+    align-items: center;
 
-    inset:0;
+    padding: 20px;
+    box-sizing: border-box;
 
-    justify-content:center;
+    background: rgba(0, 0, 0, 0.65);
 
-    align-items:center;
-
-    background:rgba(0,0,0,.65);
-
-    z-index:999;
-
+    z-index: 999;
 }
 
-.modal-conteudo{
+.modal-conteudo {
+    width: 90%;
+    max-width: 450px;
+    box-sizing: border-box;
 
-    width:90%;
+    background: rgba(20, 20, 20, 0.95);
 
-    max-width:450px;
+    padding: 30px;
 
-    background:rgba(20,20,20,.95);
+    border-radius: 20px;
+    border: 1px solid #D4AF37;
 
-    padding:30px;
-
-    border-radius:20px;
-
-    border:1px solid #D4AF37;
-
-    text-align:center;
-
-    color:#F3E8C8;
-
+    text-align: center;
+    color: #F3E8C8;
 }
 
-.modal-conteudo h2{
-
-    color:#D4AF37;
-
+.modal-conteudo h2 {
+    color: #D4AF37;
 }
 
-.fechar{
+.fechar {
+    float: right;
 
-    float:right;
+    font-size: 30px;
+    cursor: pointer;
 
-    font-size:30px;
-
-    cursor:pointer;
-
-    color:#D4AF37;
-
+    color: #D4AF37;
 }
 
 /* ===========================
    RESPONSIVIDADE
 =========================== */
 
-@media(max-width:768px){
+@media (max-width: 768px) {
 
-
-    .cadastro{
-
-        width:95%;
-
-        padding:25px;
-
+    .cadastro {
+        width: 95%;
+        padding: 25px;
+        margin: 35px auto;
     }
 
-    .campo-senha{
-
-        flex-direction:column;
-
+    .modal-conteudo {
+        width: 95%;
+        padding: 20px;
     }
 
-    .btn-olho{
-
-        width:100%;
-
+    .modal-conteudo h2 {
+        font-size: 22px;
     }
 
-    .btn-cadastro{
-
-        width:100%;
-
+    .modal-conteudo p {
+        font-size: 16px;
     }
-   .modal {
-            padding: 20px;
-            box-sizing: border-box;
-            align-items: center;
-        }
-        .modal-conteudo {
-            width: 95%;
-            padding: 20px;
-        }
-        .modal-conteudo h2 {
-            font-size: 22px;
-        }
-        .modal-conteudo p {
-            font-size: 16px;
-        }
-        .fechar {
-            font-size: 24px;
-        }    
+
+    .fechar {
+        font-size: 24px;
+    }
+}
+
+/* ===========================
+   TELAS PEQUENAS
+=========================== */
+
+@media (max-width: 400px) {
+
+    .cadastro {
+        padding: 20px;
+    }
+
+    .campo-senha {
+        gap: 6px;
+    }
+
+    .btn-olho {
+        min-width: 55px;
+        padding: 8px;
+    }
+
+    .cadastro label {
+        font-size: 15px;
+    }
 
 }

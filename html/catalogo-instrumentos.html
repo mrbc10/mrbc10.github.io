@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/catalogo-instrumentos.css">
+    <link rel="shortcut icon" href="../Imanges/favicon.ico" type="image/x-icon">
+
+    <title>Catálogo de Instrumentos | Claveon</title>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="menu">
+            <a href="../index.html">Início</a>
+            <a href="cadastro.html">Cadastro</a>
+            <a href="cadastro-instrumentos.html">Cadastrar instrumento</a>
+            <a href="catalogo-instrumentos.html">Catálogo</a>
+            <a href="#" onclick="abrirContato(); return false;">Contato</a>
+        </div>
+    </nav>
+
+    <!-- MODAL DE CONTATO -->
+    <div id="modalContato" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar" onclick="fecharContato()">&times;</span>
+
+            <h2>Claveon</h2>
+            <p>contato@claveon.com.br</p>
+            <p>(11) 99999-9999</p>
+            <p>São Paulo - SP</p>
+            <p>Seg. à Sex. • 09:00 às 18:00</p>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="catalogo">
+
+        <header class="cabecalho-catalogo">
+            <h1>Catálogo de Instrumentos</h1>
+
+            <p>
+                Conheça os instrumentos cadastrados na plataforma Claveon.
+            </p>
+        </header>
+
+        <!-- INSTRUMENTOS CARREGADOS PELO JAVASCRIPT -->
+        <section
+            id="listaInstrumentos"
+            class="lista-instrumentos"
+            aria-live="polite"
+        >
+
+            <p class="estado-catalogo">
+                Carregando instrumentos...
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- SCRIPTS -->
+    <script src="../js/script.js"></script>
+    <script src="../js/catalogo-instrumentos.js"></script>
+
+</body>
+</html>

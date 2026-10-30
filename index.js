@@ -3,23 +3,56 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
+// ===============================
+// CONFIGURAÇÕES DO SERVIDOR
+// ===============================
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Disponibiliza os arquivos do projeto
 app.use(express.static(__dirname));
+
+// Corrige o endereço antigo da página inicial
+app.get('/html/index.html', (req, res) => {
+    res.redirect('/index.html');
+});
+
+
+// ===============================
+// VETORES DE ARMAZENAMENTO
+// ===============================
 
 // Dados armazenados temporariamente na memória
 let usuarios = [];
 let instrumentos = [];
-let produtos = [];
 
+// Lista de obras de arte
+let lista = [
+    {
+        titulo: "Obra de arte 1",
+        descricao: "Fictícia",
+        imagem: "https://placeholder.com",
+        linkImagem: "Imagem Fictícia 1"
+    },
+    {
+        titulo: "Obra de arte 2",
+        descricao: "Fictícia",
+        imagem: "https://placeholder.com",
+        linkImagem: "Imagem Fictícia 2"
+    }
+];
+
+// Contador de IDs dos instrumentos
 let proximoInstrumentoId = 1;
-let proximoProdutoId = 1;
+
 
 // ===============================
 // CADASTRO DE USUÁRIOS
 // ===============================
 
 app.post('/api/cadastro', (req, res) => {
+
     const novoUsuario = req.body;
 
     if (!novoUsuario || Object.keys(novoUsuario).length === 0) {
@@ -42,7 +75,9 @@ app.post('/api/cadastro', (req, res) => {
     });
 });
 
+// Retorna os usuários sem as senhas
 app.get('/api/cadastro', (req, res) => {
+
     const dadosSeguros = usuarios.map(
         ({ senha, confirmarSenha, ...dados }) => dados
     );
@@ -50,26 +85,62 @@ app.get('/api/cadastro', (req, res) => {
     res.json(dadosSeguros);
 });
 
+
 // ===============================
 // CADASTRO DE INSTRUMENTOS
 // ===============================
 
 app.post('/api/instrumentos', (req, res) => {
-    const { nome, descricao, categoria, imagem } = req.body;
 
-    if (!nome || !categoria) {
+    const {
+        emailUsuario,
+        nome,
+        descricao,
+        imagem
+    } = req.body;
+
+    // Verifica os campos obrigatórios
+    if (
+        typeof emailUsuario !== 'string' ||
+        typeof nome !== 'string' ||
+        !emailUsuario.trim() ||
+        !nome.trim()
+    ) {
         return res.status(400).json({
             status: 'erro',
-            mensagem: 'Informe o nome e a categoria do instrumento.'
+            mensagem: 'Informe o e-mail e o nome do instrumento.'
         });
     }
 
+    // Normaliza o e-mail
+    const emailNormalizado = emailUsuario.trim().toLowerCase();
+
+    // Procura o usuário pelo e-mail cadastrado
+    const usuarioEncontrado = usuarios.find(usuario =>
+        typeof usuario.email === 'string' &&
+        usuario.email.trim().toLowerCase() === emailNormalizado
+    );
+
+    // Impede o cadastro caso o usuário não exista
+    if (!usuarioEncontrado) {
+        return res.status(404).json({
+            status: 'erro',
+            mensagem: 'E-mail não encontrado. Cadastre-se antes de cadastrar um instrumento.'
+        });
+    }
+
+    // Cria o instrumento associado ao usuário
     const novoInstrumento = {
         id: proximoInstrumentoId++,
-        nome,
-        descricao: descricao || '',
-        categoria,
-        imagem: imagem || ''
+        nome: nome.trim(),
+        descricao: typeof descricao === 'string' ? descricao.trim() : '',
+        imagem: typeof imagem === 'string' ? imagem.trim() : '',
+
+        // Informações de quem realizou o cadastro
+        usuario: {
+            nome: usuarioEncontrado.nome,
+            email: usuarioEncontrado.email
+        }
     };
 
     instrumentos.push(novoInstrumento);
@@ -84,92 +155,46 @@ app.post('/api/instrumentos', (req, res) => {
     });
 });
 
+// Retorna todos os instrumentos
 app.get('/api/instrumentos', (req, res) => {
     res.json(instrumentos);
 });
 
+
 // ===============================
-// CADASTRO DE PRODUTOS
+// LISTA DE OBRAS DE ARTE
 // ===============================
 
-app.post('/api/produtos', (req, res) => {
-    const { nome, descricao, preco, imagem, instrumentoId } = req.body;
+app.get('/api/lista', (req, res) => {
+    res.json(lista);
+});
 
-    if (!nome || preco === undefined || preco === '' || !instrumentoId) {
+app.post('/api/lista', (req, res) => {
+
+    const novaObra = req.body;
+
+    if (!novaObra || Object.keys(novaObra).length === 0) {
         return res.status(400).json({
             status: 'erro',
-            mensagem: 'Preencha o nome, o preço e o instrumento relacionado.'
+            mensagem: 'Nenhuma obra foi enviada.'
         });
     }
 
-    const instrumento = instrumentos.find(
-        item => item.id === Number(instrumentoId)
-    );
+    lista.push(novaObra);
 
-    if (!instrumento) {
-        return res.status(400).json({
-            status: 'erro',
-            mensagem: 'O instrumento selecionado não existe.'
-        });
-    }
-
-    const precoNumerico = Number(preco);
-
-    if (!Number.isFinite(precoNumerico) || precoNumerico < 0) {
-        return res.status(400).json({
-            status: 'erro',
-            mensagem: 'Informe um preço válido.'
-        });
-    }
-
-    const novoProduto = {
-        id: proximoProdutoId++,
-        nome,
-        descricao: descricao || '',
-        preco: precoNumerico,
-        imagem: imagem || '',
-        instrumentoId: instrumento.id
-    };
-
-    produtos.push(novoProduto);
-
-    console.log('Novo produto cadastrado!');
-    console.log({
-        ...novoProduto,
-        instrumento: instrumento.nome
-    });
+    console.log('Nova obra de arte cadastrada!');
+    console.log(novaObra);
 
     res.status(201).json({
         status: 'sucesso',
-        mensagem: 'Produto cadastrado com sucesso!',
-        produto: novoProduto
+        mensagem: 'Obra cadastrada com sucesso!'
     });
 });
 
-// Lista todos os produtos ou filtra pelo instrumento
-app.get('/api/produtos', (req, res) => {
-    const { instrumentoId } = req.query;
 
-    if (instrumentoId !== undefined) {
-        const instrumento = instrumentos.find(
-            item => item.id === Number(instrumentoId)
-        );
-
-        if (!instrumento) {
-            return res.status(404).json({
-                mensagem: 'Instrumento não encontrado.'
-            });
-        }
-
-        return res.json(
-            produtos.filter(
-                produto => produto.instrumentoId === instrumento.id
-            )
-        );
-    }
-
-    res.json(produtos);
-});
+// ===============================
+// INICIALIZAÇÃO DO SERVIDOR
+// ===============================
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);

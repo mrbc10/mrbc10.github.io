@@ -14,28 +14,40 @@
 
 <body>
 
+    <!-- NAVBAR -->
     <nav class="navbar">
 
         <div class="menu">
             <a href="index.html">Início</a>
             <a href="html/cadastro.html">Cadastro</a>
-            <a href="html/cadastro-instrumentos.html">Instrumentos</a>
-            <a href="html/cadastro-produtos.html">Produtos</a>
+            <a href="html/cadastro-instrumentos.html">Cadastrar instrumento</a>
+            <a href="html/catalogo-instrumentos.html">Catálogo</a>
             <a href="#" onclick="abrirContato(); return false;">Contato</a>
         </div>
 
         <div class="logo">
-            <img src="Imanges/claveon.png" alt="Logo Claveon"
-                 onclick="abrirContato()">
+            <img
+                src="Imanges/claveon.png"
+                alt="Logo Claveon"
+                onclick="abrirContato()"
+                style="cursor: pointer;"
+            >
         </div>
 
     </nav>
 
+    <!-- MODAL DE CONTATO -->
     <div id="modalContato" class="modal">
 
         <div class="modal-conteudo">
 
-            <span class="fechar" onclick="fecharContato()">&times;</span>
+            <span
+                class="fechar"
+                onclick="fecharContato()"
+                aria-label="Fechar contato"
+            >
+                &times;
+            </span>
 
             <h2>Claveon</h2>
 
@@ -48,70 +60,45 @@
 
     </div>
 
-    <div class="sobre">
+    <!-- SOBRE A CLAVEON -->
+    <main>
 
-        <h1>Quem somos nós?</h1>
+        <section class="sobre">
 
-        <p>
-            Bem-vindo à Claveon, sua loja especializada em instrumentos musicais
-            de qualidade. Oferecemos uma seleção completa para músicos de todos
-            os níveis, com instrumentos de cordas, metais, madeiras e muito mais.
-            Nosso objetivo é proporcionar a melhor experiência, unindo elegância,
-            variedade e excelência em cada detalhe.
-        </p>
+            <h1>Quem somos nós?</h1>
 
-    </div>
+            <p>
+                Bem-vindo à Claveon, uma plataforma dedicada ao universo dos
+                instrumentos musicais. Nosso objetivo é reunir instrumentos
+                cadastrados por usuários, proporcionando um espaço para conhecer
+                diferentes opções e compartilhar o interesse pela música.
+                Queremos oferecer uma experiência simples, organizada e acessível
+                para todos os apaixonados por música.
+            </p>
 
-    <hr>
+        </section>
 
-    <div class="ct">
+        <hr>
 
-        <h1>Categorias</h1>
+        <!-- ACESSO AO CATÁLOGO -->
+        <section class="ct">
 
-        <div class="ctimg">
+            <h1>Conheça nosso catálogo</h1>
 
-            <div class="item">
-                <img src="Imanges/metais.jpg" alt="Metais">
-                <a href="html/metais.html" class="btn">Metais</a>
+            <div class="ctimg">
+
+                <a href="html/catalogo-instrumentos.html" class="btn">
+                    Explorar instrumentos
+                </a>
+
             </div>
 
-            <div class="item">
-                <img src="Imanges/Cordas.png" alt="Cordas">
-                <a href="html/cordas.html" class="btn">Cordas</a>
-            </div>
+        </section>
 
-            <div class="item">
-                <img src="Imanges/madeira.jpg" alt="Madeiras">
-                <a href="html/madeiras.html" class="btn">Madeiras</a>
-            </div>
+    </main>
 
-        </div>
-
-    </div>
-
+    <!-- JAVASCRIPT -->
     <script src="js/script.js"></script>
-
-    <script>
-        fetch('/api/instrumentos')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(
-                        'Não foi possível buscar os instrumentos.'
-                    );
-                }
-
-                return response.json();
-            })
-            .then(data => {
-                console.log('Instrumentos cadastrados:', data);
-            })
-            .catch(error => {
-                console.error(
-                    'Erro ao buscar os instrumentos:',
-                    error
-                );
-            });
-    </script>
 
 </body>
 
