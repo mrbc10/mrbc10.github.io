@@ -16,14 +16,31 @@ app.use(express.static(__dirname));
 
 const db = mysql.createConnection({host: 'Localhost', 
     user: 'root',
-    password: 'ifsp'
+    password: 'ifsp',
     database: 'claveon'
+})
+
+db.connect((erro)=>{
+    if (erro)(
+        console.error(erro)
+    )
+    else(
+        console.log('conectou')
+    )
 })
 
 // Corrige o endereço antigo da página inicial
 app.get('/html/index.html', (req, res) => {
+    db.query('SELECT * from obras', (erro, resultado) => {
+        if (erro) {
+            console.error('Erro ao consultar o banco de dados:', erro);
+            return res.status(500).send('Erro interno do servidor.');
+        0}
+        res.json(resultado);
+     })
     res.redirect('/index.html');
 });
+
 
 
 // ===============================
