@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
+const mysql = require('mysql2');
 // ===============================
 // CONFIGURAÇÕES DO SERVIDOR
 // ===============================
@@ -12,6 +13,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // Disponibiliza os arquivos do projeto
 app.use(express.static(__dirname));
+
+const db = mysql.createConnection({host: 'Localhost', 
+    user: 'root',
+    password: 'ifsp'
+    database: 'claveon'
+})
 
 // Corrige o endereço antigo da página inicial
 app.get('/html/index.html', (req, res) => {
